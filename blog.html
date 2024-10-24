@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Software - Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.0"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary: #FF3366;
+            --secondary: #6C63FF;
+            --accent: #00F5A0;
+            --dark: #13111C;
+            --darker: #0C0A13;
+            --light: #ffffff;
+            --gray: #9CA3AF;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            background: rgba(19, 17, 28, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--primary);
+        }
+
+        .blog-section {
+            padding: 120px 40px;
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, 
+                rgba(255, 51, 102, 0.1), 
+                rgba(108, 99, 255, 0.1),
+                transparent 60%);
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            animation: slideIn 1s ease-out;
+        }
+
+        .blog-header h1 {
+            font-size: 48px;
+        }
+
+        .new-post-btn {
+            background: var(--primary);
+            color: var(--light);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .new-post-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            animation: slideIn 1s ease-out;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 24px;
+        }
+        .blog-card .category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .blog-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .blog-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 10, 19, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1001;
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--darker);
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            border-radius: 20px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .post-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: var(--gray);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 16px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: var(--light);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-section {
+                padding: 100px 20px;
+            }
+            .blog-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="/api/placeholder/40/40" alt="Aurora Logo">
+                Aurora
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="download.html">Download</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dev-login">
+        <button id="loginBtn" class="login-btn" onclick="handleLogin()" style="display: none;">
+            <i class="fas fa-lock"></i> Developer Login
+        </button>
+        <button id="logoutBtn" class="login-btn" onclick="handleLogout()" style="display: none;">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="blog-container">
+            <div class="blog-header">
+                <h1>Aurora Blog</h1>
+                <a href="#" class="new-post-btn" id="newPostBtn" style="display: none;" onclick="openModal()">
+                    <i class="fas fa-plus"></i>
+                    New Post
+                </a>
+            </div>
+            <div class="blog-grid" id="blogGrid">
+                <!-- Posts will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- New Post Modal -->
+    <div id="newPostModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Create New Post</h2>
+            <form class="post-form" id="newPostForm">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="Product Update">Product Update</option>
+                        <option value="Tutorial">Tutorial</option>
+                        <option value="Company News">Company News</option>
+                        <option value="Technology">Technology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" name="content" rows="6" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image">Featured Image URL</label>
+                    <input type="text" id="image" name="image" required>
+                </div>
+                <button type="submit" class="submit-btn">Publish Post</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- Developer Login Modal -->
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+                <h2>Developer Login</h2>
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+        </div>
+
+    <script>
+    import { appwriteService } from './appwrite.js';
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.padding = '15px 40px';
+                nav.style.background = 'rgba(19, 17, 28, 0.95)';
+            } else {
+                nav.style.padding = '20px 40px';
+                nav.style.background = 'rgba(19, 17, 28, 0.8)';
+            }
+        });
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('newPostModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('newPostModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('newPostModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Form submission
+        document.getElementById('newPostForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Post published successfully!');
+            closeModal();
+            e.target.reset();
+        });
+
+
+
+        async function checkAuth() {
+            try {
+                const isDeveloper = await appwriteService.isUserDeveloper();
+                document.getElementById('loginBtn').style.display = isDeveloper ? 'none' : 'block';
+                document.getElementById('logoutBtn').style.display = isDeveloper ? 'block' : 'none';
+                document.getElementById('newPostBtn').style.display = isDeveloper ? 'block' : 'none';
+            } catch (error) {
+                console.error('Auth check failed:', error);
+            }
+        }
+
+        // Load posts
+        async function loadPosts() {
+            try {
+                const posts = await appwriteService.getPosts();
+                const blogGrid = document.getElementById('blogGrid');
+                blogGrid.innerHTML = ''; // Clear existing posts
+
+                posts.forEach(post => {
+                    const postElement = createPostElement(post);
+                    blogGrid.appendChild(postElement);
+                });
+            } catch (error) {
+                console.error('Failed to load posts:', error);
+            }
+        }
+
+        // Create post element
+        function createPostElement(post) {
+            const article = document.createElement('article');
+            article.className = 'blog-card';
+            article.onclick = () => window.location.href = `/post.html?slug=${post.slug}`;
+            
+            article.innerHTML = `
+                <img src="${post.imageUrl}" alt="${post.title}" class="blog-image">
+                <div class="blog-content">
+                    <span class="category">${post.category}</span>
+                    <h3>${post.title}</h3>
+                    <p>${post.content.substring(0, 150)}...</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <span>${post.authorName}</span>
+                        </div>
+                        <span>${formatDate(post.createdAt)}</span>
+                    </div>
+                </div>
+            `;
+            return article;
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (days === 0) return 'Today';
+            if (days === 1) return 'Yesterday';
+            if (days < 7) return `${days} days ago`;
+            return date.toLocaleDateString();
+        }
+
+        // Handle login
+        async function handleLogin() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        // Handle logout
+        async function handleLogout() {
+            try {
+                await appwriteService.logout();
+                checkAuth();
+            } catch (error) {
+                console.error('Logout failed:', error);
+            }
+        }
+
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await appwriteService.login(
+                    document.getElementById('email').value,
+                    document.getElementById('password').value
+                );
+                closeLoginModal();
+                checkAuth();
+            } catch (error) {
+                alert('Login failed. Please check your credentials.');
+            }
+        });
+
+        document.getElementById('newPostForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            try {
+                await appwriteService.createPost(
+                    document.getElementById('title').value,
+                    document.getElementById('content').value,
+                    document.getElementById('category').value,
+                    document.getElementById('image').value
+                );
+                closeModal();
+                loadPosts();
+            } catch (error) {
+                alert('Failed to create post. Please try again.');
+            }
+        });
+
+        // Initial load
+        checkAuth();
+        loadPosts();
+    </script>
+    </script>
+</body>
+</html>
