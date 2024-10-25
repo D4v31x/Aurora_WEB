@@ -32,55 +32,137 @@
             overflow-x: hidden;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: rgba(19, 17, 28, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-        }
+/* Updated Navigation */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Logo Pill */
+.logo {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.logo img {
+    height: 32px;
+    width: auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
+/* Navigation Links Pill */
+.nav-links {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
         .nav-links a {
-            color: var(--light);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 20px;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            z-index: 1;
         }
 
-        .nav-links a:hover {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
+        /* Active marker */
+        .nav-marker {
+            position: absolute;
+            height: calc(100% - 12px);
+            top: 6px;
+            left: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
         }
+
+        /* Hover effect */
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        /* Active state */
+        .nav-links a.active {
+            color: var(--light);
+        }
+
+        /* Position the marker based on active link */
+        .nav-links a:nth-child(1).active ~ .nav-marker {
+            width: 80px;
+            transform: translateX(0);
+        }
+
+        .nav-links a:nth-child(2).active ~ .nav-marker {
+            width: 88px;
+            transform: translateX(68px);
+        }
+
+        .nav-links a:nth-child(3).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(160px);
+        }
+
+        .nav-links a:nth-child(4).active ~ .nav-marker {
+            width: 72px;
+            transform: translateX(302px);
+        }
+
+        .nav-links a:nth-child(5).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(322px);
+        }
+
+        .nav-links a:nth-child(6).active ~ .nav-marker {
+            width: 64px;
+            transform: translateX(408px);
+        }
+
+        /* Scroll Effect - Updated */
+nav.scrolled .logo,
+nav.scrolled .nav-links {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
 
         .about-hero {
-            min-height: 60vh;
+            min-height: 30vh;
             padding: 160px 40px 80px;
             background: radial-gradient(circle at top right, 
                 rgba(255, 51, 102, 0.1), 
@@ -95,7 +177,7 @@
 
         .about-header {
             text-align: center;
-            margin-bottom: 80px;
+
         }
 
         .about-header h1 {
@@ -205,19 +287,18 @@
 </head>
 <body>
     <nav>
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="/api/placeholder/40/40" alt="Aurora Logo">
-                Aurora
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="download.html">Download</a>
-                <a href="projects.html">Projects</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="blog.html">Blog</a>
-            </div>
+        <a href="index.html" class="logo">
+            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="download.html">Download</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <div class="nav-marker"></div>
         </div>
     </nav>
 
@@ -225,61 +306,30 @@
         <div class="about-content">
             <div class="about-header" data-aos="fade-up">
                 <h1>About Aurora Software</h1>
-                <p>We're a team of passionate developers and designers on a mission to create beautiful, intuitive software that enhances your digital life. Our journey began with a simple idea: music should be experienced, not just played.</p>
+                <p>Aurora Software is a project created by a high-school IT student. No other persons are involved. All code is made by LLM's</p>
             </div>
         </div>
     </section>
 
     <section class="team-section">
         <div class="team-grid">
-            <div class="team-member" data-aos="fade-up">
-                <div class="member-image">
-                    <img src="/api/placeholder/150/150" alt="Sarah Chen">
-                </div>
-                <div class="member-info">
-                    <h3>Sarah Chen</h3>
-                    <div class="role">Founder & CEO</div>
-                    <p>Former Spotify engineer with a passion for creating beautiful music experiences.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                <div class="member-image">
-                    <img src="/api/placeholder/150/150" alt="Marcus Rodriguez">
-                </div>
-                <div class="member-info">
-                    <h3>Marcus Rodriguez</h3>
-                    <div class="role">Lead Developer</div>
-                    <p>Audio processing expert with a background in machine learning and signal processing.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-
             <div class="team-member" data-aos="fade-up" data-aos-delay="200">
                 <div class="member-image">
-                    <img src="/api/placeholder/150/150" alt="Emma Wilson">
+                    <img src="/img/pfp.jpg" alt="David B">
                 </div>
                 <div class="member-info">
-                    <h3>Emma Wilson</h3>
-                    <div class="role">UX Designer</div>
-                    <p>Award-winning designer focused on creating intuitive and delightful user experiences.</p>
+                    <h3>David Brichacek</h3>
+                    <div class="role">Founder, UX Desginer, Marketing</div>
+                    <p>High-School IT student from Czech Republic, who loves to mess up with PC, mobile phones, etc. Recently started digging in graphic design.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="https://www.instagram.com/iam_daveid_/"><i class="fab fa-instagram"></i> @iam_daveid_</a>
+                        <a href="https://www.instagram.com/aurora.software/"><i class="fab fa-instagram"></i> @aurora_software</a>
                     </div>
                 </div>
             </div>
+            
         </div>
+        
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -299,6 +349,15 @@
                 nav.style.background = 'rgba(19, 17, 28, 0.8)';
             }
         });
+
+        window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
     </script>
 </body>
 </html>

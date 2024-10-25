@@ -31,251 +31,405 @@
             color: var(--light);
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: rgba(19, 17, 28, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-        }
+/* Updated Navigation */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Logo Pill */
+.logo {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.logo img {
+    height: 32px;
+    width: auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
+/* Navigation Links Pill */
+.nav-links {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
         .nav-links a {
-            color: var(--light);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 20px;
-        }
-
-        .nav-links a:hover {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
-        }
-
-        .blog-section {
-            padding: 120px 40px;
-            min-height: 100vh;
-            background: radial-gradient(circle at top right, 
-                rgba(255, 51, 102, 0.1), 
-                rgba(108, 99, 255, 0.1),
-                transparent 60%);
-        }
-
-        .blog-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .blog-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            animation: slideIn 1s ease-out;
-        }
-
-        .blog-header h1 {
-            font-size: 48px;
-        }
-
-        .new-post-btn {
-            background: var(--primary);
-            color: var(--light);
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-
-        .new-post-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
-            animation: slideIn 1s ease-out;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 24px;
-        }
-        .blog-card .category {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
-            border-radius: 20px;
             font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .blog-card h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .blog-card p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--gray);
-            font-size: 14px;
-        }
-
-        .blog-author {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .author-avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(12, 10, 19, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1001;
-        }
-
-        .modal-content {
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
             position: relative;
-            background: var(--darker);
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 40px;
-            border-radius: 20px;
-            animation: slideIn 0.5s ease-out;
+            white-space: nowrap;
+            z-index: 1;
         }
 
-        .close-modal {
+        /* Active marker */
+        .nav-marker {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            height: calc(100% - 12px);
+            top: 6px;
+            left: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Hover effect */
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        /* Active state */
+        .nav-links a.active {
+            color: var(--light);
+        }
+
+        /* Position the marker based on active link */
+        .nav-links a:nth-child(1).active ~ .nav-marker {
+            width: 80px;
+            transform: translateX(0);
+        }
+
+        .nav-links a:nth-child(2).active ~ .nav-marker {
+            width: 88px;
+            transform: translateX(68px);
+        }
+
+        .nav-links a:nth-child(3).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(160px);
+        }
+
+        .nav-links a:nth-child(4).active ~ .nav-marker {
+            width: 72px;
+            transform: translateX(246px);
+        }
+
+        .nav-links a:nth-child(5).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(322px);
+        }
+
+        .nav-links a:nth-child(6).active ~ .nav-marker {
+            width: 64px;
+            transform: translateX(486px);
+        }
+
+        /* Scroll Effect - Updated */
+nav.scrolled .logo,
+nav.scrolled .nav-links {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+/* Enhanced Blog Section - Compatible with existing functionality */
+.blog-section {
+    padding: 120px 40px;
+    min-height: 100vh;
+    background: 
+        radial-gradient(circle at 0% 0%, rgba(255, 51, 102, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(108, 99, 255, 0.08) 0%, transparent 50%),
+        var(--dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-section::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--primary);
+    filter: blur(120px);
+    opacity: 0.1;
+    top: -100px;
+    right: -100px;
+    border-radius: 50%;
+}
+
+.blog-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Enhanced Header */
+.blog-header {
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.blog-header h1 {
+    font-size: 56px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--light), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.blog-header p {
+    color: var(--gray);
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* Enhanced Controls */
+.blog-controls {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 16px 24px 16px 50px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: var(--light);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.search-box input:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 51, 102, 0.1);
+}
+
+.search-box i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus + i {
+    color: var(--primary);
+}
+
+/* Style the dropdown to match the dark theme */
+.filter-dropdown select {
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: var(--light);
+    font-size: 16px;
+    min-width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 48px;
+}
+
+/* Style the dropdown options */
+.filter-dropdown select option {
+    background: var(--darker);
+    color: var(--light);
+    padding: 12px;
+}
+
+.filter-dropdown select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 51, 102, 0.1);
+}
+
+/* Enhanced Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.blog-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+}
+
+.blog-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, 
+        rgba(255, 51, 102, 0.1),
+        rgba(108, 99, 255, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.blog-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(255, 51, 102, 0.1);
+}
+
+.blog-card:hover::before {
+    opacity: 1;
+}
+
+.blog-content {
+    padding: 30px;
+}
+
+.category {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: rgba(255, 51, 102, 0.1);
+    color: var(--primary);
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.blog-card:hover .category {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.blog-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    transition: all 0.3s;
+}
+
+.blog-card:hover h3 {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 15px;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.blog-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blog-author i {
+    font-size: 20px;
+    color: var(--gray);
+}
+
+/* Loading Skeleton Enhancement */
+.loading-skeleton {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.06) 50%,
+        rgba(255, 255, 255, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
             font-size: 24px;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .close-modal:hover {
-            color: var(--primary);
-        }
-
-        .post-form {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .form-group label {
-            color: var(--gray);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
             color: var(--light);
-            font-size: 16px;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: var(--light);
-            padding: 16px 32px;
+            background: none;
             border: none;
-            border-radius: 30px;
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 51, 102, 0.2);
         }
 
         @keyframes slideIn {
@@ -290,214 +444,137 @@
         }
 
         @media (max-width: 1024px) {
-            .nav-links {
-                display: none;
+            .mobile-menu-btn {
+                display: block;
             }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                padding: 40px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+            .blog-header h1 {
+        font-size: 48px;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
         }
+
+        
 
         @media (max-width: 768px) {
             .blog-section {
-                padding: 100px 20px;
-            }
-            .blog-header {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
+        padding: 100px 20px;
+    }
+    
+    .blog-header {
+        text-align: center;
+    }
+    
+    .blog-header p {
+        margin: 0 auto;
+    }
+    
+    .blog-controls {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-content">
+        <!-- Navigation -->
+        <nav>
             <a href="index.html" class="logo">
-                <img src="/api/placeholder/40/40" alt="Aurora Logo">
-                Aurora
+                <img src="img/Aurora_modern.svg" alt="Aurora Logo">
             </a>
+            
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="download.html">Download</a>
                 <a href="projects.html">Projects</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <a href="blog.html">Blog</a>
+                <a href="blog.html" class="active">Blog</a>
+                <div class="nav-marker"></div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <div class="dev-login">
-        <button id="loginBtn" class="login-btn" onclick="handleLogin()" style="display: none;">
-            <i class="fas fa-lock"></i> Developer Login
-        </button>
-        <button id="logoutBtn" class="login-btn" onclick="handleLogout()" style="display: none;">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-    </div>
-
-    <!-- Blog Section -->
     <section class="blog-section">
         <div class="blog-container">
             <div class="blog-header">
-                <h1>Aurora Blog</h1>
-                <a href="#" class="new-post-btn" id="newPostBtn" style="display: none;" onclick="openModal()">
-                    <i class="fas fa-plus"></i>
-                    New Post
-                </a>
+                <h1>Blog</h1>
+                <p>Want to be updated about everything? See this page for new updates about Aurora Software! </p>
             </div>
+            
+            <div class="blog-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search articles..." id="searchInput">
+                </div>
+                <div class="filter-dropdown">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="Announcement">Announcement</option>
+                        <option value="Development">Development</option>
+                        <option value="Design">Design</option>
+                        <option value="Updates">Updates</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="blog-grid" id="blogGrid">
                 <!-- Posts will be dynamically inserted here -->
             </div>
         </div>
     </section>
 
-    <!-- New Post Modal -->
-    <div id="newPostModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2>Create New Post</h2>
-            <form class="post-form" id="newPostForm">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
-                </div>
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category" required>
-                        <option value="Product Update">Product Update</option>
-                        <option value="Tutorial">Tutorial</option>
-                        <option value="Company News">Company News</option>
-                        <option value="Technology">Technology</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="content">Content</label>
-                    <textarea id="content" name="content" rows="6" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="image">Featured Image URL</label>
-                    <input type="text" id="image" name="image" required>
-                </div>
-                <button type="submit" class="submit-btn">Publish Post</button>
-            </form>
-        </div>
-    </div>
+    <script type="module">
+        import { getAllPosts } from './posts.js';
 
-        <!-- Developer Login Modal -->
-        <div id="loginModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal" onclick="closeLoginModal()">&times;</span>
-                <h2>Developer Login</h2>
-                <form class="login-form" id="loginForm">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" required>
-                    </div>
-                    <button type="submit" class="submit-btn">Login</button>
-                </form>
-            </div>
-        </div>
-
-    <script>
-    import { appwriteService } from './appwrite.js';
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '15px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.95)';
-            } else {
-                nav.style.padding = '20px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.8)';
-            }
-        });
-
-        // Modal functions
-        function openModal() {
-            document.getElementById('newPostModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('newPostModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('newPostModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-
-        // Form submission
-        document.getElementById('newPostForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Post published successfully!');
-            closeModal();
-            e.target.reset();
-        });
-
-
-
-        async function checkAuth() {
-            try {
-                const isDeveloper = await appwriteService.isUserDeveloper();
-                document.getElementById('loginBtn').style.display = isDeveloper ? 'none' : 'block';
-                document.getElementById('logoutBtn').style.display = isDeveloper ? 'block' : 'none';
-                document.getElementById('newPostBtn').style.display = isDeveloper ? 'block' : 'none';
-            } catch (error) {
-                console.error('Auth check failed:', error);
-            }
-        }
-
-        // Load posts
-        async function loadPosts() {
-            try {
-                const posts = await appwriteService.getPosts();
-                const blogGrid = document.getElementById('blogGrid');
-                blogGrid.innerHTML = ''; // Clear existing posts
-
-                posts.forEach(post => {
-                    const postElement = createPostElement(post);
-                    blogGrid.appendChild(postElement);
-                });
-            } catch (error) {
-                console.error('Failed to load posts:', error);
-            }
-        }
-
-        // Create post element
+        // Enhanced post element creation
         function createPostElement(post) {
             const article = document.createElement('article');
             article.className = 'blog-card';
             article.onclick = () => window.location.href = `/post.html?slug=${post.slug}`;
             
             article.innerHTML = `
-                <img src="${post.imageUrl}" alt="${post.title}" class="blog-image">
                 <div class="blog-content">
                     <span class="category">${post.category}</span>
                     <h3>${post.title}</h3>
                     <p>${post.content.substring(0, 150)}...</p>
                     <div class="blog-meta">
                         <div class="blog-author">
+                            <i class="fas fa-user-circle"></i>
                             <span>${post.authorName}</span>
                         </div>
-                        <span>${formatDate(post.createdAt)}</span>
+                        <span><i class="far fa-clock"></i> ${formatDate(post.createdAt)}</span>
                     </div>
                 </div>
             `;
             return article;
         }
 
-        // Format date
         function formatDate(dateString) {
             const date = new Date(dateString);
             const now = new Date();
@@ -510,56 +587,150 @@
             return date.toLocaleDateString();
         }
 
-        // Handle login
-        async function handleLogin() {
-            document.getElementById('loginModal').style.display = 'block';
+        // Search and filter functionality
+        function filterPosts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const posts = getAllPosts();
+            
+            const filteredPosts = posts.filter(post => {
+                const matchesSearch = post.title.toLowerCase().includes(searchTerm) || 
+                                    post.content.toLowerCase().includes(searchTerm);
+                const matchesCategory = !category || post.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            const blogGrid = document.getElementById('blogGrid');
+            blogGrid.innerHTML = '';
+
+            if (filteredPosts.length === 0) {
+                blogGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                        <i class="fas fa-search" style="font-size: 48px; color: var(--gray); margin-bottom: 20px;"></i>
+                        <p>No posts found matching your criteria</p>
+                    </div>`; // Continuing the previous string literal
+                return;
+            }
+
+            filteredPosts.forEach(post => {
+                const postElement = createPostElement(post);
+                blogGrid.appendChild(postElement);
+            });
         }
 
-        // Handle logout
-        async function handleLogout() {
-            try {
-                await appwriteService.logout();
-                checkAuth();
-            } catch (error) {
-                console.error('Logout failed:', error);
+        // Loading skeleton
+        function createSkeletonLoader() {
+            const skeleton = document.createElement('article');
+            skeleton.className = 'blog-card loading-skeleton';
+            skeleton.innerHTML = `
+                <div class="blog-content">
+                    <div style="width: 80px; height: 24px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 16px;"></div>
+                    <div style="width: 100%; height: 28px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px;"></div>
+                    <div style="width: 90%; height: 28px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px;"></div>
+                    <div style="width: 100%; height: 60px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 24px;"></div>
+                    <div style="width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 16px;"></div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="width: 120px; height: 20px; background: rgba(255,255,255,0.05); border-radius: 4px;"></div>
+                        <div style="width: 80px; height: 20px; background: rgba(255,255,255,0.05); border-radius: 4px;"></div>
+                    </div>
+                </div>
+            `;
+            return skeleton;
+        }
+
+        // Show loading state
+        function showLoading() {
+            const blogGrid = document.getElementById('blogGrid');
+            blogGrid.innerHTML = '';
+            for (let i = 0; i < 6; i++) {
+                blogGrid.appendChild(createSkeletonLoader());
             }
         }
 
-        // Form submissions
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            try {
-                await appwriteService.login(
-                    document.getElementById('email').value,
-                    document.getElementById('password').value
-                );
-                closeLoginModal();
-                checkAuth();
-            } catch (error) {
-                alert('Login failed. Please check your credentials.');
+        // Enhanced scroll handling for navbar
+        function handleScroll() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        });
+        }
 
-        document.getElementById('newPostForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            try {
-                await appwriteService.createPost(
-                    document.getElementById('title').value,
-                    document.getElementById('content').value,
-                    document.getElementById('category').value,
-                    document.getElementById('image').value
-                );
-                closeModal();
-                loadPosts();
-            } catch (error) {
-                alert('Failed to create post. Please try again.');
-            }
-        });
+        // Mobile menu handling
+        function setupMobileMenu() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
 
-        // Initial load
-        checkAuth();
-        loadPosts();
-    </script>
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-btn')) {
+                    navLinks.classList.remove('active');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        }
+
+        // Intersection Observer for animation
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.blog-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                observer.observe(card);
+            });
+        }
+
+        // Initialize
+        async function initialize() {
+            showLoading();
+
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Load initial posts
+            filterPosts();
+
+            // Setup event listeners
+            document.getElementById('searchInput').addEventListener('input', filterPosts);
+            document.getElementById('categoryFilter').addEventListener('change', filterPosts);
+            window.addEventListener('scroll', handleScroll);
+
+            // Setup mobile menu
+            setupMobileMenu();
+
+            // Setup animations
+            setupIntersectionObserver();
+        }
+
+        // Start the app
+        initialize();
+
+        window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
     </script>
 </body>
 </html>

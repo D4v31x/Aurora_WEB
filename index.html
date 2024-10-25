@@ -55,7 +55,7 @@
 
         .loader-image {
             width: 120px;
-            height: 120px;
+            height: 150px;
             margin-bottom: 20px;
             animation: pulse 2s infinite;
         }
@@ -64,62 +64,142 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border: 2px solid var(--primary);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             animation: ripple 2s infinite;
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: rgba(19, 17, 28, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            transition: all 0.3s;
-        }
+/* Updated Navigation */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Logo Pill */
+.logo {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.logo img {
+    height: 32px;
+    width: auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
+/* Navigation Links Pill */
+.nav-links {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
         .nav-links a {
-            color: var(--light);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 20px;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            z-index: 1;
         }
 
-        .nav-links a:hover {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
+        /* Active marker */
+        .nav-marker {
+            position: absolute;
+            height: calc(100% - 12px);
+            top: 6px;
+            left: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
         }
+
+        /* Hover effect */
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        /* Active state */
+        .nav-links a.active {
+            color: var(--light);
+        }
+
+        /* Position the marker based on active link */
+        .nav-links a:nth-child(1).active ~ .nav-marker {
+            width: 80px;
+            transform: translateX(0);
+        }
+
+        .nav-links a:nth-child(2).active ~ .nav-marker {
+            width: 88px;
+            transform: translateX(68px);
+        }
+
+        .nav-links a:nth-child(3).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(160px);
+        }
+
+        .nav-links a:nth-child(4).active ~ .nav-marker {
+            width: 72px;
+            transform: translateX(246px);
+        }
+
+        .nav-links a:nth-child(5).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(322px);
+        }
+
+        .nav-links a:nth-child(6).active ~ .nav-marker {
+            width: 64px;
+            transform: translateX(408px);
+        }
+
+        /* Scroll Effect - Updated */
+nav.scrolled .logo,
+nav.scrolled .nav-links {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
 
         /* Hero Section */
         .hero {
@@ -240,7 +320,8 @@
         }
 
         .hero-image img {
-            width: 100%;
+            width: 80%;
+            margin-left: 70px;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
@@ -290,6 +371,85 @@
             font-size: 14px;
             color: var(--gray);
         }
+
+            /* Project Info Section */
+    .project-info {
+        padding: 80px 40px;
+        background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .project-info::before {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: var(--secondary);
+        filter: blur(120px);
+        opacity: 0.1;
+        top: 20%;
+        right: 10%;
+    }
+
+    .project-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .project-text {
+        position: relative;
+        z-index: 1;
+    }
+
+    .project-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(108, 99, 255, 0.1);
+        color: var(--secondary);
+        border-radius: 20px;
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .project-text h2 {
+        font-size: 36px;
+        margin-bottom: 24px;
+        background: linear-gradient(45deg, var(--light), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .project-text p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--gray);
+        margin-bottom: 20px;
+    }
+
+    .tech-stack {
+        display: flex;
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        font-size: 14px;
+        color: var(--gray);
+    }
 
         /* Animations */
         @keyframes slideIn {
@@ -355,9 +515,32 @@
                 display: none;
             }
 
+            nav {
+                width: calc(100% - 20px);
+            }
+    
             .nav-links {
                 display: none;
             }
+    
+            .logo {
+                padding: 8px 16px;
+            }
+
+            .project-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 40px;
+        }
+
+        .tech-stack {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .roadmap-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
         }
 
         @media (max-width: 768px) {
@@ -372,7 +555,199 @@
             .cta-buttons {
                 flex-direction: column;
             }
+
+            .project-info {
+            padding: 60px 20px;
         }
+
+        .project-text h2 {
+            font-size: 28px;
+        }
+
+        .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .involvement-options {
+        flex-direction: column;
+    }
+    
+    .project-plans {
+        padding: 60px 20px;
+    }
+    
+    .plans-header h2 {
+        font-size: 28px;
+    }
+        }
+
+        .project-plans {
+    padding: 80px 40px;
+    background: var(--darker);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-plans::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.1;
+    top: 20%;
+    left: 10%;
+}
+
+.plans-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.plans-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.plans-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0, 245, 160, 0.1);
+    color: var(--accent);
+    border-radius: 20px;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.plans-header h2 {
+    font-size: 36px;
+    margin-bottom: 16px;
+    background: linear-gradient(45deg, var(--light), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.plans-header p {
+    color: var(--gray);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.roadmap-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.roadmap-item:hover {
+    transform: translateY(-5px);
+}
+
+.roadmap-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.roadmap-item h3 {
+    color: var(--accent);
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.roadmap-item h4 {
+    color: var(--light);
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.roadmap-item p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin-bottom: 12px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+}
+
+.status {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.get-involved {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+}
+
+.get-involved h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: var(--light);
+}
+
+.get-involved p {
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.involvement-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.involvement-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    color: var(--light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.involvement-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
     </style>
 </head>
 <body>
@@ -380,25 +755,24 @@
     <div class="loader-wrapper">
         <div class="loader-content">
             <div class="loader-circle"></div>
-            <img src="/api/placeholder/120/120" alt="Aurora Logo" class="loader-image">
+            <img src="img/A_modern.png" alt="Aurora Logo" class="loader-image">
         </div>
     </div>
 
     <!-- Navigation -->
     <nav>
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="/api/placeholder/40/40" alt="Aurora Logo">
-                Aurora
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="download.html">Download</a>
-                <a href="projects.html">Projects</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="blog.html">Blog</a>
-            </div>
+        <a href="index.html" class="logo">
+            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="download.html">Download</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <div class="nav-marker"></div>
         </div>
     </nav>
 
@@ -408,7 +782,11 @@
             <div class="hero-text">
                 <span class="hero-badge">
                     <i class="fas fa-star"></i>
-                    New Release - Aurora Music 2.0
+                    Aurora Software Featured
+                </span>
+                <span class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    Current Release - Aurora Music 0.0.81
                 </span>
                 <h1>Redefine Your Music Experience</h1>
                 <p>Transform how you experience your local music collection with Aurora Music. 
@@ -426,7 +804,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="/api/placeholder/600/400" alt="Aurora Music Interface">
+                <img src="/img/home.png" alt="Aurora Music Interface">
                 <div class="feature-preview one">
                     <div class="feature-preview-icon">
                         <i class="fas fa-wave-square"></i>
@@ -449,6 +827,114 @@
         </div>
     </section>
 
+        <!-- Project Info Section -->
+        <section class="project-info">
+            <div class="project-container">
+                <div class="project-text" data-aos="fade-right">
+                    <span class="project-badge">
+                        <i class="fas fa-code"></i>
+                        Student Project
+                    </span>
+                    <h2>Created with AI Assistance</h2>
+                    <p>Aurora Software is an innovative project developed by a high school IT student, showcasing the potential of human-AI collaboration. Every line of code was crafted through interaction with Large Language Models, demonstrating how modern AI tools can empower young developers to create professional-grade software.</p>
+                    <p>This project serves as both a functional mobile apps and an educational journey into software development, UI/UX design, and the practical applications of artificial intelligence in programming.</p>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fas fa-robot"></i>
+                            AI Assisted
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code-branch"></i>
+                            Open Source
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            Student Project
+                        </div>
+                    </div>
+                </div>
+                <div class="project-text" data-aos="fade-left">
+                    <p>The entire development process, from initial concept to final implementation, was guided by AI language models. This includes:</p>
+                    <p>
+                       • Core functionality programming<br>
+                       • Performance optimization<br>
+                       • Bug fixing and testing<br>
+                    <p>This transparent approach aims to inspire other students and demonstrate how AI can be leveraged as a powerful educational tool in software development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Plans Section -->
+<section class="project-plans">
+    <div class="plans-container">
+        <div class="plans-header" data-aos="fade-up">
+            <span class="plans-badge">
+                <i class="fas fa-rocket"></i>
+                Future Development
+            </span>
+            <h2>Project Roadmap</h2>
+            <p>Discover what's next for Aurora Software as we continue to evolve and improve our platform.</p>
+        </div>
+        
+        <div class="roadmap-grid">
+            <div class="roadmap-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="roadmap-icon">
+                    <i class="fas fa-mobile"></i>
+                </div>
+                <h3>Started: Q2 2024</h3>
+                <h4>Aurora Music - Android App Launch</h4>
+                <p>Native Android application has launched in Alpha phase with updates deploying every month.</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%"></div>
+                </div>
+                <span class="status">Launched - Alpha Verison</span>
+            </div>
+            
+            <div class="roadmap-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="roadmap-icon">
+                    <i class="fas fa-mobile"></i>
+                </div>
+                <h3>Q1 2025</h3>
+                <h4>Aurora Music - iOS App</h4>
+                <p>Aurora Music is coming on iOS, with same features and updates as its Android version!</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 15%"></div>
+                </div>
+                <span class="status">Planning Phase</span>
+            </div>
+            
+            <div class="roadmap-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="roadmap-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Q2 2025</h3>
+                <h4>Aurora Music - V1 Version</h4>
+                <p>The first, stable, feature packed version of Aurora Music!</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 25%"></div>
+                </div>
+                <span class="status">Development Phase</span>
+            </div>
+        </div>
+        
+        <div class="get-involved" data-aos="fade-up">
+            <h3>Get Involved</h3>
+            <p>Join our community and help shape the future of Aurora Software.</p>
+            <div class="involvement-options">
+                <a href="https://github.com/D4v31x/Aurora-Music" class="involvement-button">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="contact.html" class="involvement-button">
+                    <i class="fas fa-bug"></i>
+                    <span>Report Issues</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
@@ -469,17 +955,15 @@
             }, 2000);
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '15px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.95)';
-            } else {
-                nav.style.padding = '20px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.8)';
-            }
-        });
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+ 
     </script>
 </body>
 </html>

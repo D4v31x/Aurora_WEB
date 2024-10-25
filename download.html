@@ -33,54 +33,134 @@
             overflow-x: hidden;
         }
 
-        /* Navigation styles from main page */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: rgba(19, 17, 28, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            transition: all 0.3s;
-        }
+/* Updated Navigation */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Logo Pill */
+.logo {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.logo img {
+    height: 32px;
+    width: auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
+/* Navigation Links Pill */
+.nav-links {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
         .nav-links a {
-            color: var(--light);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 20px;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            z-index: 1;
         }
 
-        .nav-links a:hover {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
+        /* Active marker */
+        .nav-marker {
+            position: absolute;
+            height: calc(100% - 12px);
+            top: 6px;
+            left: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
         }
+
+        /* Hover effect */
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        /* Active state */
+        .nav-links a.active {
+            color: var(--light);
+        }
+
+        /* Position the marker based on active link */
+        .nav-links a:nth-child(1).active ~ .nav-marker {
+            width: 80px;
+            transform: translateX(0);
+        }
+
+        .nav-links a:nth-child(2).active ~ .nav-marker {
+            width: 88px;
+            transform: translateX(94px);
+        }
+
+        .nav-links a:nth-child(3).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(160px);
+        }
+
+        .nav-links a:nth-child(4).active ~ .nav-marker {
+            width: 72px;
+            transform: translateX(246px);
+        }
+
+        .nav-links a:nth-child(5).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(322px);
+        }
+
+        .nav-links a:nth-child(6).active ~ .nav-marker {
+            width: 64px;
+            transform: translateX(408px);
+        }
+
+        /* Scroll Effect - Updated */
+nav.scrolled .logo,
+nav.scrolled .nav-links {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
 
         /* Download Page Specific Styles */
         .download-header {
@@ -112,7 +192,7 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
@@ -136,9 +216,14 @@
             border: 2px solid var(--primary);
         }
 
-        .pricing-card h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .pricing-card.popular img{
+            width: 210px;
+            padding-bottom: 20px;
+        }
+
+        .pricing-card img{
+            width: 70px;
+            padding-bottom: 20px;
         }
 
         .price {
@@ -212,71 +297,48 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="/api/placeholder/40/40" alt="Aurora Logo">
-                Aurora
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="download.html">Download</a>
-                <a href="projects.html">Projects</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="blog.html">Blog</a>
-            </div>
+        <a href="index.html" class="logo">
+            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="download.html" class="active">Download</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <div class="nav-marker"></div>
         </div>
     </nav>
 
     <!-- Download Header -->
     <header class="download-header">
-        <h1>Choose Your Perfect Plan</h1>
-        <p>Experience Aurora Music the way that suits you best. From casual listeners to audiophiles, we've got you covered.</p>
+        <h1>Choose Your Platform</h1>
+        <p>Experience Aurora Music the way that suits you best.</p>
     </header>
 
-    <!-- Pricing Section -->
+    <!-- Platforms Section -->
     <section class="pricing-section">
         <div class="pricing-grid">
-            <!-- Free Plan -->
-            <div class="pricing-card" data-aos="fade-up">
-                <h3>Basic</h3>
-                <div class="price">Free<span>/forever</span></div>
-                <ul class="features">
-                    <li><i class="fas fa-check"></i> Basic music organization</li>
-                    <li><i class="fas fa-check"></i> Standard audio quality</li>
-                    <li><i class="fas fa-check"></i> Basic visualizer</li>
-                    <li><i class="fas fa-check"></i> Limited library size</li>
-                    <li><i class="fas fa-check"></i> Community support</li>
-                </ul>
-                <a href="#" class="download-btn outline">Download Now</a>
-            </div>
-
-            <!-- Pro Plan -->
+            <!-- Android -->
             <div class="pricing-card popular" data-aos="fade-up" data-aos-delay="100">
-                <h3>Pro</h3>
-                <div class="price">$9.99<span>/month</span></div>
+                <img src="img/android_logo.png" alt="Android">
+                <div class="price">Alpha - 0.0.81<span></span></div>
                 <ul class="features">
-                    <li><i class="fas fa-check"></i> Advanced organization</li>
-                    <li><i class="fas fa-check"></i> Hi-Fi audio quality</li>
-                    <li><i class="fas fa-check"></i> Advanced visualizer</li>
-                    <li><i class="fas fa-check"></i> Unlimited library size</li>
-                    <li><i class="fas fa-check"></i> Priority support</li>
+                    <li><i class="fas fa-check"></i> Exclusive alpha access</li>
+                    <li><i class="fas fa-check"></i> Contributing to shape app's future</li>
+                    <li><i class="fas fa-check"></i> New releases added monthly</li>
                 </ul>
-                <a href="#" class="download-btn">Start Free Trial</a>
+                <a href="https://github.com/D4v31x/Aurora-Music/releases/latest" class="download-btn">Download Now!</a>
             </div>
-
-            <!-- Enterprise Plan -->
-            <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>Enterprise</h3>
-                <div class="price">$29.99<span>/month</span></div>
+            <!-- iOS -->
+            <div class="pricing-card" data-aos="fade-up">
+                <img src="img/ios.png" alt="iOS">
+                <div class="price">Not released<span></span></div>
                 <ul class="features">
-                    <li><i class="fas fa-check"></i> Everything in Pro</li>
-                    <li><i class="fas fa-check"></i> Studio quality audio</li>
-                    <li><i class="fas fa-check"></i> Custom visualizers</li>
-                    <li><i class="fas fa-check"></i> Multi-device sync</li>
-                    <li><i class="fas fa-check"></i> Dedicated support</li>
+                    <li>Alpha version wasn't announced yet</li>
                 </ul>
-                <a href="#" class="download-btn outline">Contact Sales</a>
             </div>
         </div>
     </section>
@@ -289,17 +351,14 @@
             once: true
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '15px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.95)';
-            } else {
-                nav.style.padding = '20px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.8)';
-            }
-        });
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
     </script>
 </body>
 </html>

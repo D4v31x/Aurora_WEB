@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Software - Blog Post</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary: #FF3366;
+            --secondary: #6C63FF;
+            --accent: #00F5A0;
+            --dark: #13111C;
+            --darker: #0C0A13;
+            --light: #ffffff;
+            --gray: #9CA3AF;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+        }
+
+/* Updated Navigation */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+/* Logo Pill */
+.logo {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
+
+.logo img {
+    height: 32px;
+    width: auto;
+}
+
+/* Navigation Links Pill */
+.nav-links {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        /* Active marker */
+        .nav-marker {
+            position: absolute;
+            height: calc(100% - 12px);
+            top: 6px;
+            left: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Hover effect */
+        .nav-links a:hover {
+            color: var(--light);
+        }
+
+        /* Active state */
+        .nav-links a.active {
+            color: var(--light);
+        }
+
+        /* Position the marker based on active link */
+        .nav-links a:nth-child(1).active ~ .nav-marker {
+            width: 80px;
+            transform: translateX(0);
+        }
+
+        .nav-links a:nth-child(2).active ~ .nav-marker {
+            width: 88px;
+            transform: translateX(68px);
+        }
+
+        .nav-links a:nth-child(3).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(160px);
+        }
+
+        .nav-links a:nth-child(4).active ~ .nav-marker {
+            width: 72px;
+            transform: translateX(246px);
+        }
+
+        .nav-links a:nth-child(5).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(322px);
+        }
+
+        .nav-links a:nth-child(6).active ~ .nav-marker {
+            width: 64px;
+            transform: translateX(486px);
+        }
+
+        /* Scroll Effect - Updated */
+nav.scrolled .logo,
+nav.scrolled .nav-links {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+        /* Enhanced Blog Section */
+        .blog-section {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: radial-gradient(
+                circle at top right,
+                rgba(255, 51, 102, 0.08),
+                rgba(108, 99, 255, 0.08),
+                transparent 70%
+            );
+            position: relative;
+        }
+
+        .blog-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, var(--darker), transparent);
+            pointer-events: none;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        /* Enhanced Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 40px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .back-button:hover {
+            color: var(--primary);
+            background: rgba(255, 51, 102, 0.1);
+            transform: translateX(-5px);
+            border-color: var(--primary);
+        }
+
+        .back-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+
+        /* Enhanced Post Header */
+        .post-header {
+            margin-bottom: 60px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .category {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--primary);
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 51, 102, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .category:hover {
+            background: rgba(255, 51, 102, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .post-title {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--gray) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced Post Meta */
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+            margin-bottom: 40px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .post-meta:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .post-meta .author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .author-avatar:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Enhanced Post Content */
+        .post-content {
+            line-height: 1.8;
+            font-size: 18px;
+            color: var(--gray);
+            padding: 0 40px;
+        }
+
+        .post-content p {
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .post-content p:hover {
+            color: var(--light);
+        }
+
+        .post-content h2 {
+            color: var(--light);
+            font-size: 32px;
+            margin: 48px 0 24px;
+            background: linear-gradient(135deg, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .post-content h3 {
+            color: var(--light);
+            font-size: 24px;
+            margin: 36px 0 20px;
+            background: linear-gradient(135deg, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .post-content a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0 4px;
+        }
+
+        .post-content a:hover {
+            color: var(--light);
+        }
+
+        .post-content a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .post-content a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .post-content blockquote {
+            margin: 32px 0;
+            padding: 24px 32px;
+            border-left: 4px solid var(--primary);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 0 20px 20px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .post-content blockquote:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(5px);
+        }
+
+        .post-content blockquote::before {
+            content: '"';
+            position: absolute;
+            top: 0;
+            left: 16px;
+            font-size: 48px;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Enhanced Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .post-container {
+                padding: 20px;
+            }
+
+            .post-content {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 36px;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .post-meta .author {
+                flex-direction: column;
+            }
+        }
+
+        .table-of-contents {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .table-of-contents h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-of-contents h3::before {
+            content: '\f03a';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .table-of-contents li {
+            margin: 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .table-of-contents li.toc-h3 {
+            margin-left: 20px;
+            font-size: 0.95em;
+        }
+
+        .table-of-contents a {
+            color: var(--gray);
+            text-decoration: none;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border-left: 2px solid transparent;
+        }
+
+        .table-of-contents a:hover {
+            color: var(--light);
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .table-of-contents a.active {
+            color: var(--primary);
+            background: rgba(255, 51, 102, 0.1);
+            border-left-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .table-of-contents {
+                padding: 20px;
+                margin: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="download.html">Download</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html" class="active">Blog</a>
+            <div class="nav-marker"></div>
+        </div>
+    </nav>
+
+    <section class="blog-section">
+        <div class="post-container">
+            <a href="blog.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            <div id="postContent">
+                <!-- Post will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { getPostBySlug } from './posts.js';
+
+        // Enhanced initials function
+        function getInitials(name) {
+            return name
+                .split(' ')
+                .map(word => word[0])
+                .join('')
+                .toUpperCase();
+        }
+
+        // Scroll progress bar
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        }
+
+        // Nav scroll effect
+        function updateNav() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        function loadPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            
+            const post = getPostBySlug(slug);
+            if (!post) {
+                window.location.href = '/blog.html';
+                return;
+            }
+
+            document.title = `${post.title} - Aurora Software`;
+            
+            const postContent = document.getElementById('postContent');
+            postContent.innerHTML = `
+                <article class="post-header">
+                    <span class="category">
+                        <i class="fas fa-tag"></i>
+                        ${post.category}
+                    </span>
+                    <h1 class="post-title">${post.title}</h1>
+                    <div class="post-meta">
+                        <div class="author">
+                            <div class="author-avatar">${getInitials(post.authorName)}</div>
+                            <div>
+                                <div style="margin-bottom: 4px; font-weight: 500;">${post.authorName}</div>
+                                <div style="font-size: 14px; opacity: 0.8">Aurora Team</div>
+                            </div>
+                        </div>
+                        <div class="post-date">
+                            <div style="text-align: right; margin-bottom: 4px">Published on</div>
+                            <div style="font-size: 14px; opacity: 0.8">${new Date(post.createdAt).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric'
+                            })}</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        ${post.content}
+                    </div>
+                    <div class="share-section">
+                        <h3>Share this post</h3>
+                        <div class="share-buttons">
+                            <button onclick="sharePost('twitter')" class="share-button twitter">
+                                <i class="fab fa-twitter"></i>
+                                Twitter
+                            </button>
+                            <button onclick="sharePost('linkedin')" class="share-button linkedin">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </button>
+                            <button onclick="copyLink()" class="share-button copy-link">
+                                <i class="fas fa-link"></i>
+                                Copy Link
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+
+            // Add new styles for the share section
+            const style = document.createElement('style');
+            style.textContent = `
+                .share-section {
+                    margin-top: 60px;
+                    padding: 30px;
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    animation: fadeIn 0.8s ease-out;
+                }
+
+                .share-section h3 {
+                    margin-bottom: 20px;
+                    font-size: 20px;
+                    color: var(--light);
+                }
+
+                .share-buttons {
+                    display: flex;
+                    gap: 15px;
+                    flex-wrap: wrap;
+                }
+
+                .share-button {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 12px 24px;
+                    border-radius: 25px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    background: rgba(255, 255, 255, 0.05);
+                    color: var(--light);
+                }
+
+                .share-button:hover {
+                    transform: translateY(-2px);
+                }
+
+                .share-button.twitter:hover {
+                    background: #1DA1F2;
+                }
+
+                .share-button.linkedin:hover {
+                    background: #0077B5;
+                }
+
+                .share-button.copy-link:hover {
+                    background: var(--primary);
+                }
+
+                .toast {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    padding: 12px 24px;
+                    background: rgba(0, 245, 160, 0.9);
+                    color: var(--dark);
+                    border-radius: 25px;
+                    font-weight: 500;
+                    transform: translateY(100px);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                }
+
+                .toast.show {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+
+                .estimated-read-time {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 8px 16px;
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: 20px;
+                    font-size: 14px;
+                    color: var(--gray);
+                    margin-top: 20px;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Initialize animations for content sections
+            const contentSections = document.querySelectorAll('.post-content > *');
+            contentSections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.5s ease';
+                section.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(section);
+            });
+
+            // Add estimated read time
+            const wordCount = post.content.trim().split(/\s+/).length;
+            const readingTime = Math.ceil(wordCount / 200); // Assuming 200 words per minute
+            const readTimeElement = document.createElement('div');
+            readTimeElement.className = 'estimated-read-time';
+            readTimeElement.innerHTML = `
+                <i class="far fa-clock"></i>
+                ${readingTime} min read
+            `;
+            document.querySelector('.category').after(readTimeElement);
+        }
+
+        // Sharing functionality
+        window.sharePost = function(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.title);
+            
+            let shareUrl;
+            switch(platform) {
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+                    break;
+                case 'linkedin':
+                    shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+                    break;
+            }
+            
+            window.open(shareUrl, '_blank');
+        };
+
+        // Copy link functionality
+        window.copyLink = function() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Link copied to clipboard!');
+            });
+        };
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateProgressBar();
+            updateNav();
+        });
+
+        function generateTableOfContents() {
+            const content = document.querySelector('.post-content');
+            const headings = content.querySelectorAll('h2, h3');
+            
+            if (headings.length > 0) {
+                // Add IDs to headings if they don't exist
+                headings.forEach((heading, index) => {
+                    if (!heading.id) {
+                        heading.id = `heading-${index}`;
+                    }
+                });
+
+                const toc = document.createElement('div');
+                toc.className = 'table-of-contents';
+                toc.innerHTML = `
+                    <h3>Table of Contents</h3>
+                    <ul>
+                        ${Array.from(headings).map(heading => `
+                            <li class="toc-${heading.tagName.toLowerCase()}">
+                                <a href="#${heading.id}">
+                                    ${heading.textContent}
+                                </a>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+
+                // Insert TOC after post meta
+                const postMeta = document.querySelector('.post-meta');
+                if (postMeta) {
+                    postMeta.insertAdjacentElement('afterend', toc);
+                }
+
+                // Add smooth scroll behavior
+                const tocLinks = toc.querySelectorAll('a');
+                tocLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').slice(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            // Adjust scroll position to account for fixed header
+                            const headerOffset = 100;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // Add scroll spy functionality
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '-100px 0px -66%',
+                    threshold: 0
+                };
+
+                const headingsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const id = entry.target.getAttribute('id');
+                        const tocLink = toc.querySelector(`a[href="#${id}"]`);
+                        
+                        if (entry.isIntersecting) {
+                            // Remove all active classes first
+                            toc.querySelectorAll('a').forEach(link => {
+                                link.classList.remove('active');
+                            });
+                            // Add active class to current heading
+                            if (tocLink) {
+                                tocLink.classList.add('active');
+                            }
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all headings
+                headings.forEach(heading => {
+                    headingsObserver.observe(heading);
+                });
+            }
+        }
+
+        // Initial load
+        loadPost();
+        // Wait for content to be loaded before generating TOC
+        window.addEventListener('load', () => {
+            setTimeout(generateTableOfContents, 100);
+        });
+
+        window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+    </script>
+</body>
+</html>

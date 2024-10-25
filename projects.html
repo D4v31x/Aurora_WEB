@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
-        /* Include the base styles from the main page */
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
         * {
@@ -33,56 +32,135 @@
             overflow-x: hidden;
         }
 
-        /* Navigation styles from main page */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: rgba(19, 17, 28, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            transition: all 0.3s;
-        }
+/* Updated Navigation */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Logo Pill */
+.logo {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.logo img {
+    height: 32px;
+    width: auto;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
+/* Navigation Links Pill */
+.nav-links {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px;
+    display: flex;
+    gap: 4px;
+    position: relative;
+    box-shadow: 
+        0 4px 24px -1px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.3s ease;
+}
 
         .nav-links a {
-            color: var(--light);
+            color: var(--gray);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 20px;
+            font-size: 14px;
+            padding: 8px 20px;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            z-index: 1;
         }
 
+        /* Active marker */
+        .nav-marker {
+            position: absolute;
+            height: calc(100% - 12px);
+            top: 6px;
+            left: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
+        }
+
+        /* Hover effect */
         .nav-links a:hover {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
+            color: var(--light);
         }
 
-        /* Projects Page Specific Styles */
+        /* Active state */
+        .nav-links a.active {
+            color: var(--light);
+        }
+
+        /* Position the marker based on active link */
+        .nav-links a:nth-child(1).active ~ .nav-marker {
+            width: 80px;
+            transform: translateX(0);
+        }
+
+        .nav-links a:nth-child(2).active ~ .nav-marker {
+            width: 88px;
+            transform: translateX(68px);
+        }
+
+        .nav-links a:nth-child(3).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(204px);
+        }
+
+        .nav-links a:nth-child(4).active ~ .nav-marker {
+            width: 72px;
+            transform: translateX(246px);
+        }
+
+        .nav-links a:nth-child(5).active ~ .nav-marker {
+            width: 82px;
+            transform: translateX(322px);
+        }
+
+        .nav-links a:nth-child(6).active ~ .nav-marker {
+            width: 64px;
+            transform: translateX(408px);
+        }
+
+        /* Scroll Effect - Updated */
+nav.scrolled .logo,
+nav.scrolled .nav-links {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 8px 32px -1px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
         .projects-header {
             padding: 160px 40px 80px;
             text-align: center;
@@ -119,11 +197,18 @@
             overflow: hidden;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
 
         .project-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
+        }
+
+        .project-link-wrapper {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .project-image {
@@ -135,210 +220,167 @@
         .project-content {
             padding: 30px;
         }
+
         .project-content h3 {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
-
-    .project-content p {
-        color: var(--gray);
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
-
-    .project-tags {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-    }
-
-    .project-tag {
-        padding: 6px 12px;
-        background: rgba(255, 51, 102, 0.1);
-        color: var(--primary);
-        border-radius: 20px;
-        font-size: 14px;
-    }
-
-    .project-links {
-        display: flex;
-        gap: 15px;
-    }
-
-    .project-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--light);
-        text-decoration: none;
-        font-weight: 500;
-        transition: all 0.3s;
-    }
-
-    .project-link:hover {
-        color: var(--primary);
-    }
-
-    .project-status {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        padding: 6px 12px;
-        background: rgba(0, 245, 160, 0.1);
-        color: var(--accent);
-        border-radius: 20px;
-        font-size: 14px;
-    }
-
-    .filters {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 40px;
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-    }
-
-    .filter-btn {
-        padding: 8px 16px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--light);
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .filter-btn.active {
-        background: var(--primary);
-        border-color: var(--primary);
-    }
-
-    .filter-btn:hover {
-        border-color: var(--primary);
-    }
-
-    @media (max-width: 768px) {
-        .projects-grid {
-            grid-template-columns: 1fr;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--light);
         }
-        
-        .nav-links {
-            display: none;
+
+        .project-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
-    }
-</style>
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            padding: 6px 12px;
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .project-link:hover {
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--primary);
+        }
+
+        .project-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+            background: rgba(0, 245, 160, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 2;
+        }
+
+        .filters {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
 <body>
-    <!-- Navigation remains the same -->
-
     <nav>
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="/api/placeholder/40/40" alt="Aurora Logo">
-                Aurora
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="download.html">Download</a>
-                <a href="projects.html">Projects</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="blog.html">Blog</a>
-            </div>
+        <a href="index.html" class="logo">
+            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
+        </a>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="download.html">Download</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="blog.html">Blog</a>
+            <div class="nav-marker"></div>
         </div>
     </nav>
 
-    <!-- Projects Header -->
     <header class="projects-header">
         <h1>Our Projects</h1>
         <p>Discover our innovative software solutions designed to enhance your digital experience.</p>
     </header>
 
-    <!-- Filters -->
     <div class="filters" data-aos="fade-up">
         <button class="filter-btn active">All</button>
         <button class="filter-btn">Music</button>
-        <button class="filter-btn">Video</button>
-        <button class="filter-btn">Productivity</button>
-        <button class="filter-btn">Tools</button>
     </div>
 
-    <!-- Projects Grid -->
     <div class="projects-grid">
-        <!-- Aurora Music -->
         <div class="project-card" data-aos="fade-up">
-            <img src="/api/placeholder/400/200" alt="Aurora Music Interface" class="project-image">
-            <div class="project-content">
-                <span class="project-status">Latest Release</span>
-                <h3>Aurora Music</h3>
-                <p>A modern music player with stunning visualizations and smart organization features.</p>
-                <div class="project-tags">
-                    <span class="project-tag">Music</span>
-                    <span class="project-tag">Desktop</span>
-                    <span class="project-tag">Cross-platform</span>
+            <a href="aurora-music.html" class="project-link-wrapper">
+                <img src="/img/Music_bannerV2.png" alt="Aurora Music Interface" class="project-image">
+                <div class="project-content">
+                    <span class="project-status">Latest Release - 0.0.81</span>
+                    <h3>Aurora Music</h3>
+                    <p>A modern music player with stunning visualizations and smart organization features.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Music</span>
+                        <span class="project-tag">Android</span>
+                        <span class="project-tag">Cross-platform</span>
+                    </div>
                 </div>
+            </a>
+            <div class="project-content">
                 <div class="project-links">
-                    <a href="#" class="project-link">
+                    <a href="download.html" class="project-link">
                         <i class="fas fa-download"></i>
                         Download
                     </a>
-                    <a href="#" class="project-link">
+                    <a href="https://github.com/D4v31x/Aurora-Music/" class="project-link">
                         <i class="fas fa-code"></i>
-                        Documentation
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Aurora Video -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-            <img src="/api/placeholder/400/200" alt="Aurora Video Interface" class="project-image">
-            <div class="project-content">
-                <span class="project-status">Beta</span>
-                <h3>Aurora Video</h3>
-                <p>Professional video editing made simple with AI-powered tools and effects.</p>
-                <div class="project-tags">
-                    <span class="project-tag">Video</span>
-                    <span class="project-tag">Desktop</span>
-                    <span class="project-tag">AI</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <i class="fas fa-flask"></i>
-                        Join Beta
-                    </a>
-                    <a href="#" class="project-link">
-                        <i class="fas fa-info-circle"></i>
-                        Learn More
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Aurora Notes -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-            <img src="/api/placeholder/400/200" alt="Aurora Notes Interface" class="project-image">
-            <div class="project-content">
-                <span class="project-status">Coming Soon</span>
-                <h3>Aurora Notes</h3>
-                <p>Minimalist note-taking app with powerful organization and sync capabilities.</p>
-                <div class="project-tags">
-                    <span class="project-tag">Productivity</span>
-                    <span class="project-tag">Cross-platform</span>
-                    <span class="project-tag">Cloud</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <i class="fas fa-bell"></i>
-                        Get Notified
+                        Source Code
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({
@@ -346,7 +388,6 @@
             once: true
         });
 
-        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
@@ -358,7 +399,6 @@
             }
         });
 
-        // Filter buttons
         const filterBtns = document.querySelectorAll('.filter-btn');
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -366,6 +406,15 @@
                 btn.classList.add('active');
             });
         });
+
+        window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
     </script>
 </body>
 </html>

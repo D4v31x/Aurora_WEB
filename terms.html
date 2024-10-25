@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Aurora Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary: #FF3366;
+            --secondary: #6C63FF;
+            --accent: #00F5A0;
+            --dark: #13111C;
+            --darker: #0C0A13;
+            --light: #ffffff;
+            --gray: #9CA3AF;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1400px;
+            padding: 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            padding: 8px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            box-shadow: 
+                0 4px 24px -1px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            transition: all 0.3s ease;
+        }
+
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .terms-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        .terms-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: radial-gradient(circle at center, 
+                rgba(255, 51, 102, 0.1), 
+                rgba(108, 99, 255, 0.1),
+                transparent 60%);
+        }
+
+        .terms-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .terms-header p {
+            color: var(--gray);
+            font-size: 16px;
+        }
+
+        .terms-content {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .terms-section {
+            margin-bottom: 30px;
+        }
+
+        .terms-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .terms-section h2 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .terms-section h3 {
+            color: var(--light);
+            font-size: 20px;
+            margin: 20px 0 15px;
+        }
+
+        .terms-section p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .terms-section ul {
+            color: var(--gray);
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .terms-section li {
+            margin-bottom: 10px;
+        }
+
+        .terms-footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .terms-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .terms-footer a:hover {
+            color: var(--secondary);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: var(--light);
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .terms-container {
+                padding: 100px 15px 40px;
+            }
+
+            .terms-content {
+                padding: 25px;
+            }
+
+            .terms-header h1 {
+                font-size: 28px;
+            }
+
+            .terms-section h2 {
+                font-size: 22px;
+            }
+
+            .terms-section h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
+        </a>
+    </nav>
+
+    <div class="terms-container">
+        <div class="terms-header">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: August 18, 2024</p>
+        </div>
+
+        <div class="terms-content">
+            <div class="terms-section">
+                <h2>1. Introduction</h2>
+                <p>Welcome to Aurora Music's Privacy Policy. We take your privacy seriously and are committed to protecting your personal data that you provide while using our application.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. Information We Collect</h2>
+                <p>While using Aurora Music, we may collect the following categories of personal data:</p>
+
+                <h3>2.1 Device Technical Information</h3>
+                <ul>
+                    <li>Device brand and model</li>
+                    <li>Operating system version</li>
+                </ul>
+
+                <h3>2.2 Application Usage Data</h3>
+                <ul>
+                    <li>Time and date of application access</li>
+                    <li>Error and crash logs</li>
+                </ul>
+
+                <h3>2.3 User Identifiers</h3>
+                <ul>
+                    <li>Unique ID created during app installation</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. Purpose of Data Processing</h2>
+                <p>We use your personal data for the following purposes:</p>
+                <ul>
+                    <li><strong>Usage Analysis:</strong> Helps us understand how the application is used and improve its functionality</li>
+                    <li><strong>Improvement and Optimization:</strong> We use the data to enhance the app and ensure its stability across different devices</li>
+                    <li><strong>Diagnostics and Bug Fixing:</strong> Application crash information allows us to respond to issues more quickly</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Legal Basis for Processing</h2>
+                <p>We process your data based on:</p>
+                <ul>
+                    <li><strong>Legitimate Interest:</strong> To ensure optimal functioning and security of the application</li>
+                    <li><strong>Contractual Obligations:</strong> To provide services according to our terms of use</li>
+                    <li><strong>Consent:</strong> When required, we will ask for your consent for data processing, which you can withdraw at any time</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Data Retention</h2>
+                <h3>5.1 Storage Location and Duration</h3>
+                <p>Your data is stored on secure servers. We retain it for as long as necessary to fulfill the purposes described in this policy or as required by law.</p>
+
+                <h3>5.2 Data Security</h3>
+                <p>We use various security technologies and procedures to protect your personal data from unauthorized access, use, or disclosure.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. User Rights</h2>
+                <h3>6.1 Rights under GDPR</h3>
+                <ul>
+                    <li>Right to access your data</li>
+                    <li>Right to rectification</li>
+                    <li>Right to erasure</li>
+                    <li>Right to restrict processing</li>
+                    <li>Right to data portability</li>
+                    <li>Right to object to processing</li>
+                </ul>
+
+                <h3>6.2 Rights under CCPA</h3>
+                <ul>
+                    <li>Right to know about collection</li>
+                    <li>Right to deletion</li>
+                    <li>Right to opt-out of sharing</li>
+                    <li>Right to non-discrimination</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>7. Data Sharing</h2>
+                <p>We do not share your personal data with third parties unless required by law or with your explicit consent. Aurora Music never sells personal data to third parties.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>8. International Data Transfers</h2>
+                <p>Your personal data may be transferred and processed outside your country of residence if required by our service providers. In such cases, we ensure appropriate data protection safeguards are in place.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>9. Cookies and Tracking Technologies</h2>
+                <p>Aurora Music does not use cookies or other tracking technologies to monitor your activities.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>10. Children's Privacy</h2>
+                <p>This application is not intended for children under 13 years of age, and we do not knowingly collect personal data from children of this age. If we discover that we have inadvertently collected such data, we will delete it immediately.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>11. Changes to This Policy</h2>
+                <p>We reserve the right to modify this privacy policy at any time. If we make substantial changes, we will notify you through the application or by other appropriate means. We recommend regularly checking this page for updates.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>12. Contact Us</h2>
+                <p>If you have any questions or comments regarding this privacy policy, please don't hesitate to contact us at:</p>
+                <p><a href="mailto:info.auroramusic@protonmail.com">info.auroramusic@protonmail.com</a></p>
+            </div>
+
+            <div class="terms-section">
+                <h2>13. Final Provisions</h2>
+                <p>This privacy policy takes effect on August 18, 2024, and supersedes all previous versions.</p>
+            </div>
+        </div>
+
+        <div class="terms-footer">
+            <p>For questions about this Privacy Policy, please contact us at <a href="mailto:info.auroramusic@protonmail.com">info.auroramusic@protonmail.com</a></p>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
