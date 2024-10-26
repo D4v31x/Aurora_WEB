@@ -49,7 +49,7 @@ const blogPosts = [
 Creator, Aurora Software</p>
     `,
     authorName: "Aurora Team",
-    createdAt: "2024-10-25"
+    createdAt: "2024-10-26"
   },
   // Add more posts here
 ];
