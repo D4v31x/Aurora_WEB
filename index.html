@@ -748,6 +748,235 @@ nav.scrolled .nav-links {
     transform: translateY(-2px);
 }
 
+/* Enhanced Mobile Navigation Styles */
+.mobile-menu-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--light);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.mobile-menu-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu-toggle.active i {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 1024px) {
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: block;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        right: 0;
+        background: rgba(19, 17, 28, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 80px 20px 30px;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        visibility: hidden;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.active {
+        top: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        display: flex;
+        align-items: center;
+        padding: 16px 24px;
+        margin: 8px 0;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    .nav-links.active a {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .nav-links a:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links a:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links a:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links a:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links a:nth-child(5) { transition-delay: 0.3s; }
+    .nav-links a:nth-child(6) { transition-delay: 0.35s; }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateX(5px);
+    }
+
+    .nav-links a.active {
+        background: linear-gradient(45deg, rgba(255, 51, 102, 0.1), rgba(108, 99, 255, 0.1));
+        border-color: rgba(255, 51, 102, 0.2);
+    }
+
+    .nav-links a::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: var(--primary);
+        border-radius: 50%;
+        margin-right: 12px;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .nav-marker {
+        display: none;
+    }
+}
+
+/* Project Plans Section - Updated Responsive Styles */
+.project-plans {
+    padding: 60px 20px;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.roadmap-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.roadmap-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.plans-header {
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.plans-header h2 {
+    font-size: clamp(24px, 5vw, 36px);
+}
+
+.plans-header p {
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+.involvement-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.involvement-button {
+    min-width: 140px;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .project-plans {
+        padding: 40px 15px;
+    }
+
+    .roadmap-grid {
+        gap: 20px;
+    }
+
+    .roadmap-item {
+        padding: 20px;
+    }
+
+    .roadmap-item h3 {
+        font-size: 13px;
+    }
+
+    .roadmap-item h4 {
+        font-size: 18px;
+    }
+
+    .roadmap-item p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .get-involved {
+        padding: 30px 20px;
+    }
+
+    .get-involved h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .get-involved p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .involvement-button {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 20px;
+    }
+}
+
+/* Add these utility classes for better spacing */
+.flex-grow {
+    flex-grow: 1;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
     </style>
 </head>
 <body>
@@ -764,6 +993,10 @@ nav.scrolled .nav-links {
         <a href="index.html" class="logo">
             <img src="/Aurora_WEB/img/Aurora_modern.svg" alt="Aurora Logo">
         </a>
+        
+        <button class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
         
         <div class="nav-links">
             <a href="index.html" class="active">Home</a>
@@ -883,11 +1116,13 @@ nav.scrolled .nav-links {
                 </div>
                 <h3>Started: Q2 2024</h3>
                 <h4>Aurora Music - Android App Launch</h4>
-                <p>Native Android application has launched in Alpha phase with updates deploying every month.</p>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 100%"></div>
+                <p class="flex-grow">Native Android application has launched in Alpha phase with updates deploying every month.</p>
+                <div class="mt-auto">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 100%"></div>
+                    </div>
+                    <span class="status">Launched - Alpha Version</span>
                 </div>
-                <span class="status">Launched - Alpha Verison</span>
             </div>
             
             <div class="roadmap-item" data-aos="fade-up" data-aos-delay="200">
@@ -961,6 +1196,39 @@ nav.scrolled .nav-links {
         nav.classList.add('scrolled');
     } else {
         nav.classList.remove('scrolled');
+    }
+});
+
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+let isMenuOpen = false;
+
+mobileMenuToggle.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+    mobileMenuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        isMenuOpen = false;
+        mobileMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (isMenuOpen && !e.target.closest('nav')) {
+        isMenuOpen = false;
+        mobileMenuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = '';
     }
 });
  
