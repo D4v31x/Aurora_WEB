@@ -499,6 +499,39 @@ nav.scrolled .nav-links {
     .blog-grid {
         grid-template-columns: 1fr;
     }
+
+       /* Post page specific styles */
+       .post-container {
+        padding: 16px;
+    }
+
+    .post-header {
+        margin: -16px;
+        border-radius: 0;
+        padding: 24px 16px;
+    }
+
+    .post-title {
+        font-size: 32px;
+        margin: 16px 0;
+    }
+
+    .post-meta {
+        flex-direction: column;
+        gap: 16px;
+        margin: 20px 0;
+        padding-bottom: 20px;
+    }
+
+    .post-content {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .post-content h1 { font-size: 28px; }
+    .post-content h2 { font-size: 24px; }
+    .post-content h3 { font-size: 20px; }
+
         }
 
         /* Enhanced Mobile Navigation Styles */
@@ -616,7 +649,7 @@ nav.scrolled .nav-links {
 
 /* Add these styles to your existing CSS */
 .post-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -642,7 +675,7 @@ nav.scrolled .nav-links {
 .post-header {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
-    padding: 30px;
+    padding:20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -701,6 +734,20 @@ nav.scrolled .nav-links {
 
 .post-content li {
     margin-bottom: 10px;
+}
+
+@media (max-width: 375px) {
+    .blog-header h1 {
+        font-size: 36px;
+    }
+
+    .blog-card h3 {
+        font-size: 22px;
+    }
+
+    .blog-content {
+        padding: 20px 16px;
+    }
 }
     </style>
 </head>
