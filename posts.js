@@ -51,7 +51,99 @@ Creator, Aurora Software</p>
     authorName: "Aurora Team",
     createdAt: "2024-10-26"
   },
-  // Add more posts here
+  {
+    id: "2",
+    slug: "aurora-music-v009-alpha-release",
+    title: "Aurora Music v0.0.9-alpha Released!",
+    category: "Release Notes",
+    content: `
+  <h1>Aurora Music v0.0.9-alpha is Here!</h1>
+  
+  <p>We’re thrilled to announce the release of <strong>Aurora Music v0.0.9-alpha</strong>, the latest step in our journey to redefine your music experience. This version is packed with exciting new features, significant user interface upgrades, and key performance optimizations.</p>
+  
+  <h2>What’s New in This Release?</h2>
+  <p>Here’s a detailed look at what we’ve added and improved:</p>
+  
+  <h3>🎵 Now Playing</h3>
+  <ul>
+    <li><strong>New Interface:</strong> A completely redesigned Now Playing screen for a cleaner and more intuitive layout.</li>
+    <li><strong>Timed Lyrics:</strong> Enjoy synced lyrics as your favorite tracks play, making it easier to sing along or follow the song’s narrative.</li>
+    <li><strong>Search Tab:</strong> Quickly locate your desired tracks, albums, or artists with our new search functionality integrated into the Now Playing screen.</li>
+    <li><strong>Artist Information:</strong> Dive deeper into your music by learning about the artist directly within the app.</li>
+    <li><strong>Sleep Timer:</strong> Set a timer to automatically stop playback, perfect for winding down at night.</li>
+  </ul>
+  
+  <h3>📱 Screens</h3>
+  <ul>
+    <li><strong>Optimized Song Recommendations:</strong> Discover curated playlists and tracks tailored to your listening habits.</li>
+    <li><strong>Library Screen:</strong> A new hub for managing and exploring your saved music.</li>
+    <li><strong>Album Screen:</strong> Easily browse albums with a revamped interface designed for simplicity.</li>
+    <li><strong>Interactive Library:</strong> Clickable items on the Library Tab enhance your navigation experience.</li>
+    <li><strong>Refined Welcome Screen:</strong> A polished introduction to the app for a better first impression.</li>
+  </ul>
+  
+  <h3>⚙️ Other Features</h3>
+  <ul>
+    <li><strong>Audio Notification Controls:</strong> Manage playback from your notification tray without opening the app.</li>
+    <li><strong>Background Playback:</strong> Keep listening to your favorite tunes even when you’re multitasking.</li>
+    <li><strong>Favorite Songs Playlist:</strong> A dedicated playlist for quick access to your most-loved tracks.</li>
+    <li><strong>Various Fixes and Optimizations:</strong> Improved performance and resolved bugs for a smoother experience.</li>
+  </ul>
+  
+  <h2>What’s Coming Next?</h2>
+  <p>We’re committed to continual improvement. Expect even more features, enhanced performance, and usability updates in the upcoming versions. As always, your feedback shapes the future of Aurora Music.</p>
+
+  <p class="signature">— David<br>
+Creator, Aurora Software</p>
+    `,
+    authorName: "Aurora Team",
+    createdAt: "2024-12-03"
+  },
+  {
+    id: "3",
+    slug: "ios-release-update",
+    title: "Update on the iOS Version of Aurora Music",
+    category: "Announcement",
+    content: `
+  <h1>Important Update on Aurora Music for iOS</h1>
+  
+  <p>We want to share an important update regarding the iOS version of Aurora Music. While we had originally planned to release an iOS version alongside the Android app, unforeseen challenges have forced us to postpone the launch indefinitely. This decision was not made lightly, and we want to explain the reasons behind it and what this means moving forward.</p>
+  
+  <h2>Challenges We Face</h2>
+  <p>Here are the primary obstacles delaying the iOS release:</p>
+  
+  <h3>1. Financial Constraints</h3>
+  <p>Developing and launching an app on the Apple ecosystem requires significant resources, including:</p>
+  <ul>
+    <li>Investment in Apple’s developer program.</li>
+    <li>Access to Apple devices for testing and quality assurance.</li>
+    <li>Infrastructure costs to support iOS-specific features.</li>
+  </ul>
+  <p>At this stage, our budget is focused on perfecting the app for Android and ensuring it meets your expectations.</p>
+  
+  <h3>2. Apple’s Policies</h3>
+  <p>Apple’s stringent guidelines for app submissions demand substantial time and effort to ensure compliance. From UI consistency to feature alignment, every aspect must adhere to their ecosystem-specific standards, which requires additional development and testing resources.</p>
+  
+  <h2>What This Means for You</h2>
+  <p>While the iOS version is currently on hold, we remain dedicated to delivering the best possible experience for Android users. Once we overcome these hurdles, revisiting the development of an iOS version will be a top priority.</p>
+  
+  <h2>Your Role in the Journey</h2>
+  <p>Your support is crucial during this phase. Here’s how you can help:</p>
+  <ul>
+    <li>Continue providing feedback on the Android version.</li>
+    <li>Spread the word about Aurora Music to friends and family.</li>
+    <li>Share your thoughts and ideas to help us grow as a community.</li>
+  </ul>
+  
+  <h2>A Sincere Thank You</h2>
+  <p>We deeply appreciate your patience and understanding. Your enthusiasm for Aurora Music motivates us to keep pushing forward. Thank you for being part of our journey.</p>
+  
+  <p class="signature">— David<br>
+Creator, Aurora Software</p>
+    `,
+    authorName: "Aurora Team",
+    createdAt: "2024-12-04"
+  }    
 ];
 
 export function getAllPosts() {
