@@ -784,7 +784,7 @@ nav.scrolled .nav-links {
             <div class="blog-controls">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Search articles..." id="searchInput">
+                    <input type="text" id="searchInput" placeholder="Search posts..." oninput="filterPosts()">
                 </div>
                 <div class="filter-dropdown">
                     <select id="categoryFilter">
@@ -793,6 +793,7 @@ nav.scrolled .nav-links {
                         <option value="Development">Development</option>
                         <option value="Design">Design</option>
                         <option value="Updates">Updates</option>
+                        <option value="Release Notes">Release Notes</option>
                     </select>
                 </div>
             </div>

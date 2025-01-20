@@ -143,7 +143,45 @@ Creator, Aurora Software</p>
     `,
     authorName: "Aurora Team",
     createdAt: "2024-12-04"
-  }    
+  },
+  {
+    id: "4",
+    slug: "report-issues-update",
+    title: "Improved Bug and Feature Reporting Process",
+    category: "Announcement",
+    content: `
+  <h1>Streamlining Feedback with a New Reporting System</h1>
+  
+  <p>We’re excited to share an improvement to the <strong>Report Issue</strong> button this website. Previously, this button allowed users to report issues directly within the website. Now, it seamlessly redirects you to a dedicated Notion page, making the reporting process even more efficient and organized.</p>
+  
+  <h2>What’s New?</h2>
+  <p>When you tap the <strong>Report Issue</strong> button at the bottom of the home screen, you’ll be redirected to a Notion page. Here, you can:</p>
+  <ul>
+    <li>Submit detailed bug reports with descriptions and screenshots.</li>
+    <li>Suggest new features or improvements.</li>
+    <li>Track the status of your submissions in real-time.</li>
+  </ul>
+  
+  <h2>New Section in the Contact Tab</h2>
+  <p>In addition to the button on the home screen, we’ve added a new section in the <strong>Aurora Music sub-page</strong>, providing easy access to the reporting link. Now, no matter where you are in the website, reporting issues and sharing feedback is just a tap away.</p>
+  
+  <h2>Why the Change?</h2>
+  <p>We wanted to make the feedback process more transparent and interactive. By integrating with Notion, we can:</p>
+  <ul>
+    <li>Organize and prioritize submissions more effectively.</li>
+    <li>Keep you updated on the progress of your reports.</li>
+    <li>Encourage collaboration and community involvement in shaping Aurora Music.</li>
+  </ul>
+  
+  <h2>How You Benefit</h2>
+  <p>This improved system ensures that your feedback reaches us in a structured way, enabling quicker responses and better implementation of your ideas.</p>
+  
+  <p class="signature">— David<br>
+Creator, Aurora Software</p>
+    `,
+    authorName: "Aurora Team",
+    createdAt: "2025-01-10"
+} 
 ];
 
 export function getAllPosts() {

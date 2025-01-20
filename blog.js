@@ -1,4 +1,4 @@
-// blog.js (create this new file)
+// blog.js
 import { getAllPosts, getPostBySlug } from './posts.js';
 
 // Format date helper
@@ -46,6 +46,37 @@ function createPostElement(post) {
     return article;
 }
 
+// Filter and search posts
+function filterAndSearchPosts() {
+    const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    const selectedCategory = document.getElementById('categoryFilter').value;
+    const blogGrid = document.getElementById('blogGrid');
+    const posts = getAllPosts();
+
+    // Clear the grid
+    blogGrid.innerHTML = '';
+
+    // Filter posts based on both search query and category
+    const filteredPosts = posts.filter(post => {
+        const matchesSearch = 
+            post.title.toLowerCase().includes(searchQuery) ||
+            post.content.toLowerCase().includes(searchQuery) ||
+            post.category.toLowerCase().includes(searchQuery) ||
+            post.authorName.toLowerCase().includes(searchQuery);
+
+        const matchesCategory = 
+            selectedCategory === '' || 
+            post.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+    });
+
+    // Display filtered posts
+    filteredPosts.forEach(post => {
+        blogGrid.appendChild(createPostElement(post));
+    });
+}
+
 // Show blog list
 function showBlogList() {
     const blogGrid = document.getElementById('blogGrid');
@@ -53,17 +84,13 @@ function showBlogList() {
     const blogControls = document.querySelector('.blog-controls');
     const blogHeader = document.querySelector('.blog-header');
 
-    blogGrid.style.display = 'grid';
-    blogControls.style.display = 'flex';
-    blogHeader.style.display = 'block';
-    postContainer.style.display = 'none';
+    if (blogGrid) blogGrid.style.display = 'grid';
+    if (blogControls) blogControls.style.display = 'flex';
+    if (blogHeader) blogHeader.style.display = 'block';
+    if (postContainer) postContainer.style.display = 'none';
 
-    // Load blog posts
-    const posts = getAllPosts();
-    blogGrid.innerHTML = '';
-    posts.forEach(post => {
-        blogGrid.appendChild(createPostElement(post));
-    });
+    // Initial load of all posts
+    filterAndSearchPosts();
 }
 
 // Show single post
@@ -79,44 +106,45 @@ function showPost(slug) {
     const blogControls = document.querySelector('.blog-controls');
     const blogHeader = document.querySelector('.blog-header');
 
-    blogGrid.style.display = 'none';
-    blogControls.style.display = 'none';
-    blogHeader.style.display = 'none';
-    postContainer.style.display = 'block';
-
-    postContainer.innerHTML = `
-        <a href="#" class="back-button">
-            <i class="fas fa-arrow-left"></i>
-            Back to Blog
-        </a>
-        <article class="post-header">
-            <span class="category">
-                <i class="fas fa-tag"></i>
-                ${post.category}
-            </span>
-            <h1 class="post-title">${post.title}</h1>
-            <div class="post-meta">
-                <div class="author">
-                    <div class="author-avatar">${getInitials(post.authorName)}</div>
-                    <div>
-                        <div style="margin-bottom: 4px; font-weight: 500;">${post.authorName}</div>
-                        <div style="font-size: 14px; opacity: 0.8">Aurora Team</div>
+    if (blogGrid) blogGrid.style.display = 'none';
+    if (blogControls) blogControls.style.display = 'none';
+    if (blogHeader) blogHeader.style.display = 'none';
+    if (postContainer) {
+        postContainer.style.display = 'block';
+        postContainer.innerHTML = `
+            <a href="#" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blog
+            </a>
+            <article class="post-header">
+                <span class="category">
+                    <i class="fas fa-tag"></i>
+                    ${post.category}
+                </span>
+                <h1 class="post-title">${post.title}</h1>
+                <div class="post-meta">
+                    <div class="author">
+                        <div class="author-avatar">${getInitials(post.authorName)}</div>
+                        <div>
+                            <div style="margin-bottom: 4px; font-weight: 500;">${post.authorName}</div>
+                            <div style="font-size: 14px; opacity: 0.8">Aurora Team</div>
+                        </div>
+                    </div>
+                    <div class="post-date">
+                        <div style="text-align: right; margin-bottom: 4px">Published on</div>
+                        <div style="font-size: 14px; opacity: 0.8">${new Date(post.createdAt).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        })}</div>
                     </div>
                 </div>
-                <div class="post-date">
-                    <div style="text-align: right; margin-bottom: 4px">Published on</div>
-                    <div style="font-size: 14px; opacity: 0.8">${new Date(post.createdAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    })}</div>
+                <div class="post-content">
+                    ${post.content}
                 </div>
-            </div>
-            <div class="post-content">
-                ${post.content}
-            </div>
-        </article>
-    `;
+            </article>
+        `;
+    }
 }
 
 // Handle hash changes
@@ -132,7 +160,7 @@ function handleHashChange() {
 
 // Initialize the blog
 function initializeBlog() {
-    // Add post container to DOM if it doesn't exist
+    // Add post container if it doesn't exist
     if (!document.getElementById('postContainer')) {
         const postContainer = document.createElement('div');
         postContainer.id = 'postContainer';
@@ -144,6 +172,18 @@ function initializeBlog() {
     // Set up event listeners
     window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('load', handleHashChange);
+
+    // Set up search and filter listeners
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', filterAndSearchPosts);
+    }
+
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterAndSearchPosts);
+    }
 
     // Initial load
     handleHashChange();

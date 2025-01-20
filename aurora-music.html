@@ -546,6 +546,221 @@ nav.scrolled .nav-links {
     }
 }
 
+.project-status {
+    padding: 60px 40px;
+    background: linear-gradient(to bottom right, rgba(255, 51, 102, 0.05), rgba(108, 99, 255, 0.05));
+}
+
+.status-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.status-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.notion-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.notion-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.progress-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.progress-card:hover {
+    transform: translateY(-5px);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.progress-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.percentage {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: var(--progress);
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+    transition: width 1s ease-out;
+}
+
+.status-detail {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Kanban Styles */
+.kanban-container {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kanban-header {
+    margin-bottom: 30px;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 12px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    width: fit-content;
+}
+
+.tab-btn {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: var(--gray);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+}
+
+.kanban-board {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.kanban-board.active {
+    display: grid;
+}
+
+.kanban-column {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.kanban-column h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--gray);
+}
+
+.kanban-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.kanban-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.kanban-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.tag.new { background: rgba(0, 245, 160, 0.2); color: #00F5A0; }
+.tag.enhancement { background: rgba(108, 99, 255, 0.2); color: #6C63FF; }
+.tag.in-progress { background: rgba(255, 51, 102, 0.2); color: #FF3366; }
+.tag.completed { background: rgba(0, 245, 160, 0.2); color: #00F5A0; }
+.tag.bug { background: rgba(255, 51, 102, 0.2); color: #FF3366; }
+.tag.fixing { background: rgba(255, 193, 7, 0.2); color: #FFC107; }
+.tag.fixed { background: rgba(0, 245, 160, 0.2); color: #00F5A0; }
+
+.kanban-item h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.kanban-item p {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+@media (max-width: 768px) {
+    .project-status {
+        padding: 40px 20px;
+    }
+    
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .kanban-board {
+        grid-template-columns: 1fr;
+     }
+}
     </style>
 </head>
 <body>
@@ -637,6 +852,99 @@ nav.scrolled .nav-links {
         </div>
     </section>
 
+    <section class="project-status">
+        <div class="status-header">
+            <h2>Project Status</h2>
+            <p>Track development progress and contribute to Aurora Music</p>
+            <a href="https://aurorasoftware.notion.site/Aurora-Music-Bugs-and-Features-1711f6cf216280509b70f9aad0f1c467?pvs=4" target="_blank" class="notion-button">
+                <i class="fas fa-external-link-alt"></i>
+                View on Notion
+            </a>
+        </div>
+    
+        <!-- Kanban Board Section -->
+        <div class="kanban-container">
+            <div class="kanban-header">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="features">Features</button>
+                    <button class="tab-btn" data-tab="bugs">Bug Tracking</button>
+                </div>
+            </div>
+    
+            <!-- Features Kanban -->
+            <div class="kanban-board active" id="features">
+                <div class="kanban-column">
+                    <h3>Considering</h3>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag new">New</span>
+                            <h4>Donation System</h4>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="kanban-column">
+                    <h3>To plan</h3>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag in-progress">Active</span>
+                            <h4>Download lyrics and arts during setup</h4>
+                            <p>User will be able to choose, if he wants to download all the lyrics and album/artist arts during Initial Setup</p>
+                        </div>
+                    </div>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag in-progress">Active</span>
+                            <h4>Metadata Editor</h4>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <!-- Bugs Kanban -->
+            <div class="kanban-board" id="bugs">
+                <div class="kanban-column">
+                    <h3>Waiting for ext. source</h3>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag bug">Flutter Issue</span>
+                            <h4>Lagging transitions</h4>
+                            <p>Animations and transitions are lagging on Low-end and some Mid-range devices</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="kanban-column">
+                    <h3>Pickup next</h3>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag fixing"></span>
+                            <h4>Text animations are not consistent</h4>
+                        </div>
+                    </div>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag fixing"></span>
+                            <h4>Not working permission setup</h4>
+                        </div>
+                    </div>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag fixing"></span>
+                            <h4>Lyrics timing</h4>
+                        </div>
+                    </div>
+                    <div class="kanban-items">
+                        <div class="kanban-item">
+                            <span class="tag fixing"></span>
+                            <h4>Remove permission req. when entering app for 1st time</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="progress-section">
         <div class="section-title" data-aos="fade-up">
             <h2>Development Progress</h2>
@@ -747,6 +1055,48 @@ document.addEventListener('click', (e) => {
         navLinks.classList.remove('active');
         document.body.style.overflow = '';
     }
+});
+
+function showTab(tabId) {
+        const tabs = document.querySelectorAll('.kanban-tab');
+        const buttons = document.querySelectorAll('.tab-btn');
+        
+        tabs.forEach(tab => tab.classList.remove('active'));
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`).classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.width = entry.target.style.getPropertyValue('--progress');
+            }
+        });
+    }, { threshold: 0.5 });
+
+    progressBars.forEach(bar => observer.observe(bar));
+});
+
+// Tab switching
+const tabButtons = document.querySelectorAll('.tab-btn');
+const kanbanBoards = document.querySelectorAll('.kanban-board');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons and boards
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        kanbanBoards.forEach(board => board.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding board
+        button.classList.add('active');
+        const targetBoard = document.getElementById(button.dataset.tab);
+        targetBoard.classList.add('active');
+    });
 });
     </script>
 </body>
