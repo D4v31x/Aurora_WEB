@@ -104,6 +104,140 @@
         </div>
     </section>
 
+        <!-- Enhanced App Showcase Section -->
+        <section class="app-showcase">
+            <div class="showcase-container">
+                <div class="showcase-header" data-aos="fade-up">
+                    <span class="showcase-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        App Features
+                    </span>
+                    <h2>Experience Aurora Music</h2>
+                    <p>Discover the powerful features that make Aurora Music your perfect music companion</p>
+                </div>
+
+                <!-- Interactive Feature Cards -->
+                <div class="feature-cards-grid">
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Beautiful Design</h3>
+                            <p>Modern, intuitive interface that adapts to your music taste with dynamic themes and smooth animations.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Smart Discovery</h3>
+                            <p>AI-powered recommendations that learn your preferences and suggest new tracks you'll love.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Lightning Fast</h3>
+                            <p>Optimized performance ensures your music plays instantly, no matter your device or library size.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Cross-Platform Sync</h3>
+                            <p>Seamlessly sync your playlists, preferences, and listening history across all your devices.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+                </div>
+
+                <!-- App Screenshots Carousel -->
+                <div class="screenshots-carousel" data-aos="fade-up">
+                    <div class="carousel-header">
+                        <h3>App Gallery</h3>
+                        <p>Take a visual tour through Aurora Music's interface</p>
+                    </div>
+                    
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide active">
+                                <img src="img/home.png" alt="Home Screen" loading="lazy">
+                                <div class="slide-info">
+                                    <h4>Home Screen</h4>
+                                    <p>Your music at a glance</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="img/artist.png" alt="Artist View" loading="lazy">
+                                <div class="slide-info">
+                                    <h4>Artist View</h4>
+                                    <p>Explore your favorite artists</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="img/edm.png" alt="Playlist View" loading="lazy">
+                                <div class="slide-info">
+                                    <h4>Playlists</h4>
+                                    <p>Organize your music collection</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-controls">
+                            <button class="carousel-btn prev" data-direction="prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" data-direction="next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="carousel-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Statistics -->
+                <div class="stats-section" data-aos="fade-up">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="1000">0</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">Songs Played Daily</div>
+                            <div class="stat-suffix">K+</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="99">0</div>
+                            <div class="stat-label">User Satisfaction</div>
+                            <div class="stat-suffix">%</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="24">0</div>
+                            <div class="stat-label">Updates per Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Project Info Section -->
         <section class="project-info">
             <div class="project-container">
@@ -384,6 +518,126 @@
             
             button.addEventListener('mouseup', () => {
                 button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+        });
+
+        // Enhanced Carousel Functionality
+        class ScreenshotCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.slides = document.querySelectorAll('.carousel-slide');
+                this.indicators = document.querySelectorAll('.indicator');
+                this.prevBtn = document.querySelector('.carousel-btn.prev');
+                this.nextBtn = document.querySelector('.carousel-btn.next');
+                this.autoPlayInterval = null;
+                
+                this.init();
+            }
+            
+            init() {
+                if (!this.slides.length) return;
+                
+                // Add event listeners
+                this.prevBtn?.addEventListener('click', () => this.prevSlide());
+                this.nextBtn?.addEventListener('click', () => this.nextSlide());
+                
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Auto-play
+                this.startAutoPlay();
+                
+                // Pause on hover
+                const carousel = document.querySelector('.carousel-container');
+                carousel?.addEventListener('mouseenter', () => this.stopAutoPlay());
+                carousel?.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+            
+            goToSlide(index) {
+                this.slides[this.currentSlide].classList.remove('active');
+                this.indicators[this.currentSlide].classList.remove('active');
+                
+                this.currentSlide = index;
+                
+                this.slides[this.currentSlide].classList.add('active');
+                this.indicators[this.currentSlide].classList.add('active');
+            }
+            
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.slides.length;
+                this.goToSlide(nextIndex);
+            }
+            
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+                this.goToSlide(prevIndex);
+            }
+            
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 4000);
+            }
+            
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+        }
+
+        // Statistics Counter Animation
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Initialize stats animation when in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-target'));
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize carousel
+            new ScreenshotCarousel();
+            
+            // Observe stats section
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+            
+            // Enhanced feature cards interaction
+            document.querySelectorAll('.feature-card-enhanced').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
             });
         });
     </script>
