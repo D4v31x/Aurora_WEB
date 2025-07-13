@@ -11,14 +11,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loader 
+    <!-- Enhanced Loader -->
     <div class="loader-wrapper">
         <div class="loader-content">
-            <div class="loader-circle"></div>
-            <img src="img/A_modern.png" alt="Aurora Logo" class="loader-image">
+            <div class="loader-logo">
+                <img src="img/A_modern.png" alt="Aurora Logo" class="loader-image">
+                <div class="loader-particles">
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                </div>
+            </div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div class="loader-text">
+                <span class="loader-status">Loading Aurora Software...</span>
+            </div>
         </div>
     </div>
--->
     <nav>
         <a href="index.html" class="logo">
             <img src="img/Aurora_modern.svg" alt="Aurora Logo">
@@ -620,26 +633,282 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize enhanced loader
+            window.addEventListener('load', () => {
+                new LoaderManager();
+            });
+            
             // Initialize carousel
             new ScreenshotCarousel();
+            
+            // Initialize enhanced animations
+            new AnimationObserver();
+            
+            // Initialize page transitions
+            new PageTransitions();
+            
+            // Initialize micro-interactions
+            new MicroInteractions();
             
             // Observe stats section
             const statsSection = document.querySelector('.stats-section');
             if (statsSection) {
                 statsObserver.observe(statsSection);
             }
+        });
+
+        // Enhanced Loader with Progressive Animation
+        class LoaderManager {
+            constructor() {
+                this.loader = document.querySelector('.loader-wrapper');
+                this.progressBar = document.querySelector('.loader-progress-bar');
+                this.statusText = document.querySelector('.loader-status');
+                this.loadingSteps = [
+                    'Initializing Aurora Software...',
+                    'Loading components...',
+                    'Preparing animations...',
+                    'Almost ready...',
+                    'Welcome to Aurora!'
+                ];
+                this.currentStep = 0;
+                this.init();
+            }
             
-            // Enhanced feature cards interaction
-            document.querySelectorAll('.feature-card-enhanced').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-10px) scale(1.02)';
+            init() {
+                if (!this.loader) return;
+                
+                this.simulateLoading();
+            }
+            
+            simulateLoading() {
+                const totalDuration = 3000; // 3 seconds
+                const stepDuration = totalDuration / this.loadingSteps.length;
+                
+                const progressInterval = setInterval(() => {
+                    if (this.currentStep < this.loadingSteps.length) {
+                        this.statusText.textContent = this.loadingSteps[this.currentStep];
+                        this.currentStep++;
+                    } else {
+                        clearInterval(progressInterval);
+                        setTimeout(() => this.hideLoader(), 500);
+                    }
+                }, stepDuration);
+            }
+            
+            hideLoader() {
+                this.loader.style.opacity = '0';
+                this.loader.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.loader.style.display = 'none';
+                    document.body.style.overflow = 'visible';
+                    this.triggerPageAnimations();
+                }, 800);
+            }
+            
+            triggerPageAnimations() {
+                // Trigger entrance animations for main elements
+                document.querySelectorAll('.hero-badge, .cta-button').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`;
+                    }, index * 100);
+                });
+            }
+        }
+
+        // Enhanced Intersection Observer with Multiple Animation Types
+        class AnimationObserver {
+            constructor() {
+                this.observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                this.observer = new IntersectionObserver(
+                    this.handleIntersection.bind(this),
+                    this.observerOptions
+                );
+                
+                this.init();
+            }
+            
+            init() {
+                // Observe different types of elements with different animations
+                this.observeElements('.feature-card-enhanced', 'animate-scale');
+                this.observeElements('.carousel-slide img', 'animate-rotate');
+                this.observeElements('.stat-item', 'animate-in');
+                this.observeElements('.roadmap-item', 'animate-in');
+                this.observeElements('.tech-item', 'animate-scale');
+            }
+            
+            observeElements(selector, animationClass) {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.setAttribute('data-animation', animationClass);
+                    this.observer.observe(el);
+                });
+            }
+            
+            handleIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animationClass = entry.target.getAttribute('data-animation');
+                        const delay = Math.random() * 200; // Random delay for stagger effect
+                        
+                        setTimeout(() => {
+                            entry.target.classList.add(animationClass);
+                        }, delay);
+                        
+                        this.observer.unobserve(entry.target);
+                    }
+                });
+            }
+        }
+
+        // Page Transition Manager
+        class PageTransitions {
+            constructor() {
+                this.createTransitionElement();
+                this.bindEvents();
+            }
+            
+            createTransitionElement() {
+                this.transitionEl = document.createElement('div');
+                this.transitionEl.className = 'page-transition';
+                document.body.appendChild(this.transitionEl);
+            }
+            
+            bindEvents() {
+                // Add smooth transitions to internal links
+                document.querySelectorAll('a[href^="#"], .nav-links a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (link.getAttribute('href').startsWith('#')) {
+                            e.preventDefault();
+                            this.smoothScrollToSection(link.getAttribute('href'));
+                        } else if (link.hostname === window.location.hostname) {
+                            e.preventDefault();
+                            this.transitionToPage(link.href);
+                        }
+                    });
+                });
+            }
+            
+            smoothScrollToSection(targetId) {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+            
+            transitionToPage(url) {
+                this.transitionEl.classList.add('active');
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 600);
+            }
+        }
+
+        // Enhanced Micro-Interactions
+        class MicroInteractions {
+            constructor() {
+                this.init();
+            }
+            
+            init() {
+                this.enhanceButtons();
+                this.enhanceCards();
+                this.enhanceNavigation();
+            }
+            
+            enhanceButtons() {
+                document.querySelectorAll('.cta-button, .carousel-btn, .involvement-button').forEach(button => {
+                    this.addButtonEffects(button);
+                });
+            }
+            
+            addButtonEffects(button) {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'translateY(-3px) scale(1.05)';
+                    button.style.filter = 'brightness(1.1)';
                 });
                 
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1)';
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translateY(0) scale(1)';
+                    button.style.filter = 'brightness(1)';
                 });
-            });
-        });
+                
+                button.addEventListener('mousedown', () => {
+                    button.style.transform = 'translateY(-1px) scale(1.02)';
+                });
+                
+                button.addEventListener('mouseup', () => {
+                    button.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                // Add ripple effect
+                button.addEventListener('click', (e) => {
+                    this.createRipple(e, button);
+                });
+            }
+            
+            createRipple(event, element) {
+                const ripple = document.createElement('span');
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+            
+            enhanceCards() {
+                document.querySelectorAll('.feature-card-enhanced, .roadmap-item').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-10px) scale(1.02)';
+                        card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'translateY(0) scale(1)';
+                    });
+                });
+            }
+            
+            enhanceNavigation() {
+                const nav = document.querySelector('nav');
+                let lastScrollY = window.scrollY;
+                
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > 100) {
+                        nav.classList.add('scrolled');
+                        
+                        // Hide/show nav based on scroll direction
+                        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                            nav.style.transform = 'translateX(-50%) translateY(-100%)';
+                        } else {
+                            nav.style.transform = 'translateX(-50%) translateY(0)';
+                        }
+                    } else {
+                        nav.classList.remove('scrolled');
+                        nav.style.transform = 'translateX(-50%) translateY(0)';
+                    }
+                    
+                    lastScrollY = currentScrollY;
+                });
+            }
+        }
     </script>
 </body>
 </html>

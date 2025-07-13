@@ -25,20 +25,20 @@
             overflow-x: hidden;
         }
 
-        /* Enhanced Loader */
+        /* Enhanced Loader with Advanced Animations */
         .loader-wrapper {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--darker);
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .loader-content {
@@ -46,23 +46,143 @@
             position: relative;
         }
 
+        .loader-logo {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
         .loader-image {
             width: 120px;
             height: 150px;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+            animation: loaderPulse 2s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(255, 51, 102, 0.3));
         }
 
-        .loader-circle {
+        .loader-particles {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 250px;
-            height: 250px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
+            width: 200px;
+            height: 200px;
             transform: translate(-50%, -50%);
-            animation: ripple 2s infinite;
+            pointer-events: none;
+        }
+
+        .loader-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            animation: loaderOrbit 3s infinite linear;
+        }
+
+        .loader-particle:nth-child(1) {
+            animation-delay: 0s;
+            top: 0;
+            left: 50%;
+        }
+
+        .loader-particle:nth-child(2) {
+            animation-delay: 0.6s;
+            top: 25%;
+            right: 15%;
+        }
+
+        .loader-particle:nth-child(3) {
+            animation-delay: 1.2s;
+            bottom: 25%;
+            right: 15%;
+        }
+
+        .loader-particle:nth-child(4) {
+            animation-delay: 1.8s;
+            bottom: 0;
+            left: 50%;
+        }
+
+        .loader-particle:nth-child(5) {
+            animation-delay: 2.4s;
+            top: 25%;
+            left: 15%;
+        }
+
+        .loader-progress {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .loader-progress-bar {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 2px;
+            animation: loaderProgress 3s ease-in-out forwards;
+        }
+
+        .loader-text {
+            color: var(--gray);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .loader-status {
+            animation: loaderFade 2s infinite ease-in-out;
+        }
+
+        /* Page Transition Effects */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: 9998;
+            transform: translateX(-100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page-transition.active {
+            transform: translateX(0);
+        }
+
+        /* Skeleton Loading Animations */
+        .skeleton {
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.05) 25%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                rgba(255, 255, 255, 0.05) 75%);
+            background-size: 200% 100%;
+            animation: skeleton 1.5s infinite;
+        }
+
+        .skeleton-text {
+            height: 20px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .skeleton-text.short {
+            width: 60%;
+        }
+
+        .skeleton-text.medium {
+            width: 80%;
+        }
+
+        .skeleton-text.long {
+            width: 100%;
+        }
+
+        .skeleton-card {
+            height: 200px;
+            border-radius: 16px;
+            margin-bottom: 20px;
         }
 
 /* Updated Navigation */
@@ -1070,9 +1190,120 @@ nav.scrolled .nav-links {
             }
         }
 
+        /* New Loader Animations */
+        @keyframes loaderPulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(255, 51, 102, 0.3));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 30px rgba(255, 51, 102, 0.5));
+            }
+        }
+
+        @keyframes loaderOrbit {
+            0% {
+                transform: rotate(0deg) translateX(80px) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg) translateX(80px) rotate(-360deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes loaderProgress {
+            0% {
+                width: 0;
+            }
+            30% {
+                width: 30%;
+            }
+            60% {
+                width: 60%;
+            }
+            90% {
+                width: 90%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes loaderFade {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes skeleton {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        /* Smooth Page Transitions */
+        @keyframes pageSlideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pageSlideOut {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
         /* Intersection Observer Animation Classes */
         .animate-in {
             animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-scale {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .animate-rotate {
+            animation: rotateIn 0.8s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-180deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
         }
 
         /* Responsive Design */
@@ -1642,5 +1873,55 @@ nav.scrolled .nav-links {
 
 .mt-auto {
     margin-top: auto;
+}
+
+/* Ripple Effect */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Enhanced Navigation Transitions */
+nav {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav.scrolled {
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Focus States for Accessibility */
+.cta-button:focus,
+.carousel-btn:focus,
+.involvement-button:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .particles-container,
+    .loader-particles,
+    .floating-particle {
+        display: none;
+    }
+    
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
