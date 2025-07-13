@@ -11,14 +11,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loader 
+    <!-- Enhanced Loader -->
     <div class="loader-wrapper">
         <div class="loader-content">
-            <div class="loader-circle"></div>
-            <img src="img/A_modern.png" alt="Aurora Logo" class="loader-image">
+            <div class="loader-logo">
+                <img src="img/A_modern.png" alt="Aurora Logo" class="loader-image">
+                <div class="loader-particles">
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                    <div class="loader-particle"></div>
+                </div>
+            </div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div class="loader-text">
+                <span class="loader-status">Loading Aurora Software...</span>
+            </div>
         </div>
     </div>
--->
     <nav>
         <a href="index.html" class="logo">
             <img src="img/Aurora_modern.svg" alt="Aurora Logo">
@@ -41,6 +54,20 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Animated Floating Particles -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <div class="hero-content">
             <div class="hero-text">
                 <span class="hero-badge">
@@ -51,7 +78,7 @@
                     <i class="fas fa-star"></i>
                     Current Release - Aurora Music 0.0.9 (Ice)
                 </span>
-                <h1>Redefine Your Music Experience</h1>
+                <h1><span class="typing-text" data-text="Redefine Your Music Experience"></span></h1>
                 <p>Transform how you experience your local music collection with Aurora Music. 
                    Stunning visuals, packed with features, and crystal-clear playback come together 
                    in one beautiful package.</p>
@@ -89,6 +116,140 @@
             </div>
         </div>
     </section>
+
+        <!-- Enhanced App Showcase Section -->
+        <section class="app-showcase">
+            <div class="showcase-container">
+                <div class="showcase-header" data-aos="fade-up">
+                    <span class="showcase-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        App Features
+                    </span>
+                    <h2>Experience Aurora Music</h2>
+                    <p>Discover the powerful features that make Aurora Music your perfect music companion</p>
+                </div>
+
+                <!-- Interactive Feature Cards -->
+                <div class="feature-cards-grid">
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Beautiful Design</h3>
+                            <p>Modern, intuitive interface that adapts to your music taste with dynamic themes and smooth animations.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Smart Discovery</h3>
+                            <p>AI-powered recommendations that learn your preferences and suggest new tracks you'll love.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Lightning Fast</h3>
+                            <p>Optimized performance ensures your music plays instantly, no matter your device or library size.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+
+                    <div class="feature-card-enhanced" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="feature-card-content">
+                            <h3>Cross-Platform Sync</h3>
+                            <p>Seamlessly sync your playlists, preferences, and listening history across all your devices.</p>
+                        </div>
+                        <div class="feature-card-hover-effect"></div>
+                    </div>
+                </div>
+
+                <!-- App Screenshots Carousel -->
+                <div class="screenshots-carousel" data-aos="fade-up">
+                    <div class="carousel-header">
+                        <h3>App Gallery</h3>
+                        <p>Take a visual tour through Aurora Music's interface</p>
+                    </div>
+                    
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide active">
+                                <img src="img/home.png" alt="Home Screen" loading="lazy">
+                                <div class="slide-info">
+                                    <h4>Home Screen</h4>
+                                    <p>Your music at a glance</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="img/artist.png" alt="Artist View" loading="lazy">
+                                <div class="slide-info">
+                                    <h4>Artist View</h4>
+                                    <p>Explore your favorite artists</p>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="img/edm.png" alt="Playlist View" loading="lazy">
+                                <div class="slide-info">
+                                    <h4>Playlists</h4>
+                                    <p>Organize your music collection</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-controls">
+                            <button class="carousel-btn prev" data-direction="prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next" data-direction="next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="carousel-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Statistics -->
+                <div class="stats-section" data-aos="fade-up">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="1000">0</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">Songs Played Daily</div>
+                            <div class="stat-suffix">K+</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="99">0</div>
+                            <div class="stat-label">User Satisfaction</div>
+                            <div class="stat-suffix">%</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="24">0</div>
+                            <div class="stat-label">Updates per Year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Project Info Section -->
         <section class="project-info">
@@ -213,59 +374,541 @@
             once: true
         });
 
+        // Dynamic Typing Effect
+        function typeText(element, text, speed = 100) {
+            return new Promise((resolve) => {
+                let i = 0;
+                element.textContent = '';
+                
+                function typeChar() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeChar, speed);
+                    } else {
+                        element.classList.add('typing-complete');
+                        resolve();
+                    }
+                }
+                
+                typeChar();
+            });
+        }
+
+        // Initialize typing effect when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            const typingElement = document.querySelector('.typing-text');
+            if (typingElement) {
+                const text = typingElement.getAttribute('data-text');
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+                await typeText(typingElement, text, 80);
+            }
+        });
+
+        // Enhanced Parallax Effect
+        function handleParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-image, .feature-preview');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        // Smooth scroll navigation
+        function smoothScrollToSection(targetId) {
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Enhanced intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Trigger special animations for certain elements
+                    if (entry.target.classList.contains('feature-preview')) {
+                        setTimeout(() => {
+                            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                        }, Math.random() * 300);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.feature-preview, .cta-button, .hero-badge');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
         // Loader
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.querySelector('.loader-wrapper');
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }
             }, 2000);
         });
 
+        // Enhanced scroll effects
         window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            // Apply parallax effect
+            handleParallax();
+        });
 
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-let isMenuOpen = false;
+        // Enhanced mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        let isMenuOpen = false;
 
-mobileMenuToggle.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    mobileMenuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-});
+        mobileMenuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+        });
 
-// Close menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (isMenuOpen && !e.target.closest('nav')) {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
- 
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !e.target.closest('nav')) {
+                isMenuOpen = false;
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Enhanced button interactions
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'translateY(-1px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+        });
+
+        // Enhanced Carousel Functionality
+        class ScreenshotCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.slides = document.querySelectorAll('.carousel-slide');
+                this.indicators = document.querySelectorAll('.indicator');
+                this.prevBtn = document.querySelector('.carousel-btn.prev');
+                this.nextBtn = document.querySelector('.carousel-btn.next');
+                this.autoPlayInterval = null;
+                
+                this.init();
+            }
+            
+            init() {
+                if (!this.slides.length) return;
+                
+                // Add event listeners
+                this.prevBtn?.addEventListener('click', () => this.prevSlide());
+                this.nextBtn?.addEventListener('click', () => this.nextSlide());
+                
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Auto-play
+                this.startAutoPlay();
+                
+                // Pause on hover
+                const carousel = document.querySelector('.carousel-container');
+                carousel?.addEventListener('mouseenter', () => this.stopAutoPlay());
+                carousel?.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+            
+            goToSlide(index) {
+                this.slides[this.currentSlide].classList.remove('active');
+                this.indicators[this.currentSlide].classList.remove('active');
+                
+                this.currentSlide = index;
+                
+                this.slides[this.currentSlide].classList.add('active');
+                this.indicators[this.currentSlide].classList.add('active');
+            }
+            
+            nextSlide() {
+                const nextIndex = (this.currentSlide + 1) % this.slides.length;
+                this.goToSlide(nextIndex);
+            }
+            
+            prevSlide() {
+                const prevIndex = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+                this.goToSlide(prevIndex);
+            }
+            
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 4000);
+            }
+            
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+        }
+
+        // Statistics Counter Animation
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Initialize stats animation when in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-target'));
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize enhanced loader
+            window.addEventListener('load', () => {
+                new LoaderManager();
+            });
+            
+            // Initialize carousel
+            new ScreenshotCarousel();
+            
+            // Initialize enhanced animations
+            new AnimationObserver();
+            
+            // Initialize page transitions
+            new PageTransitions();
+            
+            // Initialize micro-interactions
+            new MicroInteractions();
+            
+            // Observe stats section
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+        });
+
+        // Enhanced Loader with Progressive Animation
+        class LoaderManager {
+            constructor() {
+                this.loader = document.querySelector('.loader-wrapper');
+                this.progressBar = document.querySelector('.loader-progress-bar');
+                this.statusText = document.querySelector('.loader-status');
+                this.loadingSteps = [
+                    'Initializing Aurora Software...',
+                    'Loading components...',
+                    'Preparing animations...',
+                    'Almost ready...',
+                    'Welcome to Aurora!'
+                ];
+                this.currentStep = 0;
+                this.init();
+            }
+            
+            init() {
+                if (!this.loader) return;
+                
+                this.simulateLoading();
+            }
+            
+            simulateLoading() {
+                const totalDuration = 3000; // 3 seconds
+                const stepDuration = totalDuration / this.loadingSteps.length;
+                
+                const progressInterval = setInterval(() => {
+                    if (this.currentStep < this.loadingSteps.length) {
+                        this.statusText.textContent = this.loadingSteps[this.currentStep];
+                        this.currentStep++;
+                    } else {
+                        clearInterval(progressInterval);
+                        setTimeout(() => this.hideLoader(), 500);
+                    }
+                }, stepDuration);
+            }
+            
+            hideLoader() {
+                this.loader.style.opacity = '0';
+                this.loader.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.loader.style.display = 'none';
+                    document.body.style.overflow = 'visible';
+                    this.triggerPageAnimations();
+                }, 800);
+            }
+            
+            triggerPageAnimations() {
+                // Trigger entrance animations for main elements
+                document.querySelectorAll('.hero-badge, .cta-button').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.animation = `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`;
+                    }, index * 100);
+                });
+            }
+        }
+
+        // Enhanced Intersection Observer with Multiple Animation Types
+        class AnimationObserver {
+            constructor() {
+                this.observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+                
+                this.observer = new IntersectionObserver(
+                    this.handleIntersection.bind(this),
+                    this.observerOptions
+                );
+                
+                this.init();
+            }
+            
+            init() {
+                // Observe different types of elements with different animations
+                this.observeElements('.feature-card-enhanced', 'animate-scale');
+                this.observeElements('.carousel-slide img', 'animate-rotate');
+                this.observeElements('.stat-item', 'animate-in');
+                this.observeElements('.roadmap-item', 'animate-in');
+                this.observeElements('.tech-item', 'animate-scale');
+            }
+            
+            observeElements(selector, animationClass) {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.setAttribute('data-animation', animationClass);
+                    this.observer.observe(el);
+                });
+            }
+            
+            handleIntersection(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animationClass = entry.target.getAttribute('data-animation');
+                        const delay = Math.random() * 200; // Random delay for stagger effect
+                        
+                        setTimeout(() => {
+                            entry.target.classList.add(animationClass);
+                        }, delay);
+                        
+                        this.observer.unobserve(entry.target);
+                    }
+                });
+            }
+        }
+
+        // Page Transition Manager
+        class PageTransitions {
+            constructor() {
+                this.createTransitionElement();
+                this.bindEvents();
+            }
+            
+            createTransitionElement() {
+                this.transitionEl = document.createElement('div');
+                this.transitionEl.className = 'page-transition';
+                document.body.appendChild(this.transitionEl);
+            }
+            
+            bindEvents() {
+                // Add smooth transitions to internal links
+                document.querySelectorAll('a[href^="#"], .nav-links a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (link.getAttribute('href').startsWith('#')) {
+                            e.preventDefault();
+                            this.smoothScrollToSection(link.getAttribute('href'));
+                        } else if (link.hostname === window.location.hostname) {
+                            e.preventDefault();
+                            this.transitionToPage(link.href);
+                        }
+                    });
+                });
+            }
+            
+            smoothScrollToSection(targetId) {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+            
+            transitionToPage(url) {
+                this.transitionEl.classList.add('active');
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 600);
+            }
+        }
+
+        // Enhanced Micro-Interactions
+        class MicroInteractions {
+            constructor() {
+                this.init();
+            }
+            
+            init() {
+                this.enhanceButtons();
+                this.enhanceCards();
+                this.enhanceNavigation();
+            }
+            
+            enhanceButtons() {
+                document.querySelectorAll('.cta-button, .carousel-btn, .involvement-button').forEach(button => {
+                    this.addButtonEffects(button);
+                });
+            }
+            
+            addButtonEffects(button) {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'translateY(-3px) scale(1.05)';
+                    button.style.filter = 'brightness(1.1)';
+                });
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translateY(0) scale(1)';
+                    button.style.filter = 'brightness(1)';
+                });
+                
+                button.addEventListener('mousedown', () => {
+                    button.style.transform = 'translateY(-1px) scale(1.02)';
+                });
+                
+                button.addEventListener('mouseup', () => {
+                    button.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                // Add ripple effect
+                button.addEventListener('click', (e) => {
+                    this.createRipple(e, button);
+                });
+            }
+            
+            createRipple(event, element) {
+                const ripple = document.createElement('span');
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+            
+            enhanceCards() {
+                document.querySelectorAll('.feature-card-enhanced, .roadmap-item').forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-10px) scale(1.02)';
+                        card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'translateY(0) scale(1)';
+                    });
+                });
+            }
+            
+            enhanceNavigation() {
+                const nav = document.querySelector('nav');
+                let lastScrollY = window.scrollY;
+                
+                window.addEventListener('scroll', () => {
+                    const currentScrollY = window.scrollY;
+                    
+                    if (currentScrollY > 100) {
+                        nav.classList.add('scrolled');
+                        
+                        // Hide/show nav based on scroll direction
+                        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                            nav.style.transform = 'translateX(-50%) translateY(-100%)';
+                        } else {
+                            nav.style.transform = 'translateX(-50%) translateY(0)';
+                        }
+                    } else {
+                        nav.classList.remove('scrolled');
+                        nav.style.transform = 'translateX(-50%) translateY(0)';
+                    }
+                    
+                    lastScrollY = currentScrollY;
+                });
+            }
+        }
     </script>
 </body>
 </html>
