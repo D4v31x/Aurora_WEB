@@ -41,6 +41,20 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Animated Floating Particles -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
         <div class="hero-content">
             <div class="hero-text">
                 <span class="hero-badge">
@@ -51,7 +65,7 @@
                     <i class="fas fa-star"></i>
                     Current Release - Aurora Music 0.0.9 (Ice)
                 </span>
-                <h1>Redefine Your Music Experience</h1>
+                <h1><span class="typing-text" data-text="Redefine Your Music Experience"></span></h1>
                 <p>Transform how you experience your local music collection with Aurora Music. 
                    Stunning visuals, packed with features, and crystal-clear playback come together 
                    in one beautiful package.</p>
@@ -213,59 +227,165 @@
             once: true
         });
 
+        // Dynamic Typing Effect
+        function typeText(element, text, speed = 100) {
+            return new Promise((resolve) => {
+                let i = 0;
+                element.textContent = '';
+                
+                function typeChar() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeChar, speed);
+                    } else {
+                        element.classList.add('typing-complete');
+                        resolve();
+                    }
+                }
+                
+                typeChar();
+            });
+        }
+
+        // Initialize typing effect when page loads
+        document.addEventListener('DOMContentLoaded', async () => {
+            const typingElement = document.querySelector('.typing-text');
+            if (typingElement) {
+                const text = typingElement.getAttribute('data-text');
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+                await typeText(typingElement, text, 80);
+            }
+        });
+
+        // Enhanced Parallax Effect
+        function handleParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-image, .feature-preview');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        // Smooth scroll navigation
+        function smoothScrollToSection(targetId) {
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Enhanced intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Trigger special animations for certain elements
+                    if (entry.target.classList.contains('feature-preview')) {
+                        setTimeout(() => {
+                            entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                        }, Math.random() * 300);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.feature-preview, .cta-button, .hero-badge');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
         // Loader
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.querySelector('.loader-wrapper');
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }
             }, 2000);
         });
 
+        // Enhanced scroll effects
         window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            // Apply parallax effect
+            handleParallax();
+        });
 
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-let isMenuOpen = false;
+        // Enhanced mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        let isMenuOpen = false;
 
-mobileMenuToggle.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    mobileMenuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-});
+        mobileMenuToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+        });
 
-// Close menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (isMenuOpen && !e.target.closest('nav')) {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
- 
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !e.target.closest('nav')) {
+                isMenuOpen = false;
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Enhanced button interactions
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'translateY(-1px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+        });
     </script>
 </body>
 </html>
