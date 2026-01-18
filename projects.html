@@ -5,567 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurora Software - Projects</title>
     <link rel="icon" type="image/png" href="/img/A_pfp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        :root {
-            --primary: #FF3366;
-            --secondary: #6C63FF;
-            --accent: #00F5A0;
-            --dark: #13111C;
-            --darker: #0C0A13;
-            --light: #ffffff;
-            --gray: #9CA3AF;
-        }
-
-        body {
-            background: var(--dark);
-            color: var(--light);
-            overflow-x: hidden;
-        }
-
-/* Updated Navigation */
-nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 1400px;
-    padding: 10px;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
-
-/* Logo Pill */
-.logo {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 100px;
-    padding: 8px 20px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    box-shadow: 
-        0 4px 24px -1px rgba(0, 0, 0, 0.1),
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-    transition: all 0.3s ease;
-}
-
-.logo img {
-    height: 32px;
-    width: auto;
-}
-
-/* Navigation Links Pill */
-.nav-links {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 100px;
-    padding: 6px;
-    display: flex;
-    gap: 4px;
-    position: relative;
-    box-shadow: 
-        0 4px 24px -1px rgba(0, 0, 0, 0.1),
-        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-    transition: all 0.3s ease;
-}
-
-        .nav-links a {
-            color: var(--gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            padding: 8px 20px;
-            border-radius: 100px;
-            transition: all 0.3s ease;
-            position: relative;
-            white-space: nowrap;
-            z-index: 1;
-        }
-
-        /* Active marker */
-        .nav-marker {
-            position: absolute;
-            height: calc(100% - 12px);
-            top: 6px;
-            left: 6px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 100px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 12px -2px rgba(255, 51, 102, 0.4);
-        }
-
-        /* Hover effect */
-        .nav-links a:hover {
-            color: var(--light);
-        }
-
-        /* Active state */
-        .nav-links a.active {
-            color: var(--light);
-        }
-
-        /* Position the marker based on active link */
-        .nav-links a:nth-child(1).active ~ .nav-marker {
-            width: 80px;
-            transform: translateX(0);
-        }
-
-        .nav-links a:nth-child(2).active ~ .nav-marker {
-            width: 88px;
-            transform: translateX(68px);
-        }
-
-        .nav-links a:nth-child(3).active ~ .nav-marker {
-            width: 82px;
-            transform: translateX(204px);
-        }
-
-        .nav-links a:nth-child(4).active ~ .nav-marker {
-            width: 72px;
-            transform: translateX(246px);
-        }
-
-        .nav-links a:nth-child(5).active ~ .nav-marker {
-            width: 82px;
-            transform: translateX(322px);
-        }
-
-        .nav-links a:nth-child(6).active ~ .nav-marker {
-            width: 64px;
-            transform: translateX(408px);
-        }
-
-        /* Scroll Effect - Updated */
-nav.scrolled .logo,
-nav.scrolled .nav-links {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 
-        0 8px 32px -1px rgba(0, 0, 0, 0.15),
-        0 0 0 1px rgba(255, 255, 255, 0.08) inset;
-}
-
-        .projects-header {
-            padding: 160px 40px 80px;
-            text-align: center;
-            background: radial-gradient(circle at center, 
-                rgba(255, 51, 102, 0.1), 
-                rgba(108, 99, 255, 0.1),
-                transparent 60%);
-        }
-
-        .projects-header h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .projects-header p {
-            font-size: 18px;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .project-link-wrapper {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 30px;
-        }
-
-        .project-content h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--light);
-        }
-
-        .project-content p {
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .project-tag {
-            padding: 6px 12px;
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 14px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 15px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .project-link:hover {
-            background: rgba(255, 51, 102, 0.1);
-            color: var(--primary);
-        }
-
-        .project-status {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 6px 12px;
-            background: rgba(0, 245, 160, 0.1);
-            color: var(--accent);
-            border-radius: 20px;
-            font-size: 14px;
-            z-index: 2;
-        }
-
-        .filters {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .filter-btn:hover {
-            border-color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* Enhanced Mobile Navigation Styles */
-.mobile-menu-toggle {
-    display: none;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--light);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-toggle:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.mobile-menu-toggle i {
-    transition: transform 0.3s ease;
-}
-
-.mobile-menu-toggle.active i {
-    transform: rotate(90deg);
-}
-
-@media (max-width: 1024px) {
-    .mobile-menu-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .nav-links {
-        display: block;
-        position: fixed;
-        top: -100%;
-        left: 0;
-        right: 0;
-        background: rgba(19, 17, 28, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 80px 20px 30px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0;
-        visibility: hidden;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav-links.active {
-        top: 0;
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .nav-links a {
-        display: flex;
-        align-items: center;
-        padding: 16px 24px;
-        margin: 8px 0;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        transition: all 0.3s ease;
-        transform: translateX(-20px);
-        opacity: 0;
-    }
-
-    .nav-links.active a {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
-    .nav-links a:nth-child(1) { transition-delay: 0.1s; }
-    .nav-links a:nth-child(2) { transition-delay: 0.15s; }
-    .nav-links a:nth-child(3) { transition-delay: 0.2s; }
-    .nav-links a:nth-child(4) { transition-delay: 0.25s; }
-    .nav-links a:nth-child(5) { transition-delay: 0.3s; }
-    .nav-links a:nth-child(6) { transition-delay: 0.35s; }
-
-    .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.06);
-        transform: translateX(5px);
-    }
-
-    .nav-links a.active {
-        background: linear-gradient(45deg, rgba(255, 51, 102, 0.1), rgba(108, 99, 255, 0.1));
-        border-color: rgba(255, 51, 102, 0.2);
-    }
-
-    .nav-links a::before {
-        content: '';
-        width: 6px;
-        height: 6px;
-        background: var(--primary);
-        border-radius: 50%;
-        margin-right: 12px;
-        opacity: 0;
-        transform: scale(0);
-        transition: all 0.3s ease;
-    }
-
-    .nav-links a:hover::before,
-    .nav-links a.active::before {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    .nav-marker {
-        display: none;
-    }
-}
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">
-            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
-        </a>
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="cursor-glow"></div>
 
-        <button class="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="download.html">Download</a>
-            <a href="projects.html" class="active">Projects</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a>
-            <div class="nav-marker"></div>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="img/Aurora_modern.svg" alt="Aurora" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="download.html" class="nav-btn">
+                <span>Download</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <button class="nav-toggle"><span></span><span></span></button>
         </div>
     </nav>
 
-    <header class="projects-header">
-        <h1>My Projects</h1>
-        <p>Discover my software projects under Aurora Software.</p>
-    </header>
+    <section class="page-header">
+        <span class="label">Our Products</span>
+        <h1>Projects</h1>
+        <p>Explore our software creations and ongoing developments</p>
+    </section>
 
-    <div class="filters" data-aos="fade-up">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Music</button>
-    </div>
-
-    <div class="projects-grid">
-        <div class="project-card" data-aos="fade-up">
-            <a href="aurora-music.html" class="project-link-wrapper">
-                <img src="img/Music_bannerV2.png" alt="Aurora Music Interface" class="project-image">
-                <div class="project-content">
-                    <span class="project-status">Latest Release - 0.0.9 (Ice)</span>
-                    <h3>Aurora Music</h3>
-                    <p>A modern music player with stunning visualizations and smart organization features.</p>
-                    <div class="project-tags">
-                        <span class="project-tag">Music</span>
-                        <span class="project-tag">Android</span>
-                        <span class="project-tag">Cross-platform</span>
-                    </div>
+    <section class="projects-section">
+        <div class="projects-container">
+            <div class="project-card featured">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-music"></i></div>
+                    <span class="project-badge">Flagship</span>
                 </div>
-            </a>
-            <div class="project-content">
-                <div class="project-links">
-                    <a href="download.html" class="project-link">
+                <h2>Aurora Music</h2>
+                <p class="project-tagline">Next Generation Music Player</p>
+                <p class="project-desc">A beautifully crafted music player for Android with adaptive theming, synced lyrics, and an immersive playback experience. Built with Flutter for stunning performance.</p>
+                <div class="tech-pills">
+                    <span class="pill"><i class="fab fa-flutter"></i> Flutter</span>
+                    <span class="pill"><i class="fab fa-dart-lang"></i> Dart</span>
+                    <span class="pill"><i class="fas fa-palette"></i> Material Design</span>
+                </div>
+                <div class="project-actions">
+                    <a href="download.html" class="btn-primary">
                         <i class="fas fa-download"></i>
-                        Download
+                        <span>Download</span>
                     </a>
-                    <a href="https://github.com/D4v31x/Aurora-Music/" class="project-link">
-                        <i class="fas fa-code"></i>
-                        Source Code
+                    <a href="https://github.com/D4v31x/Aurora-Music" class="btn-ghost" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>View Source</span>
                     </a>
                 </div>
             </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fab fa-apple"></i></div>
+                    <span class="project-badge upcoming">Coming Soon</span>
+                </div>
+                <h2>Aurora Music iOS</h2>
+                <p class="project-tagline">iOS Experience</p>
+                <p class="project-desc">Bringing the Aurora Music experience to iOS users with native performance and seamless Apple ecosystem integration.</p>
+                <div class="project-status">
+                    <span class="status planned">Postponed</span>
+                    <p>Development will begin after v1 Android release</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-desktop"></i></div>
+                    <span class="project-badge upcoming">Planned</span>
+                </div>
+                <h2>Aurora Desktop</h2>
+                <p class="project-tagline">Cross-Platform Desktop App</p>
+                <p class="project-desc">A desktop companion for Aurora Music, allowing you to manage your music library and sync across devices.</p>
+                <div class="project-status">
+                    <span class="status planned">Planned</span>
+                    <p>In the roadmap for future development</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <section class="about-stack">
+        <div class="stack-container">
+            <div class="stack-card">
+                <span class="card-badge"><i class="fas fa-code-branch"></i> Open Source</span>
+                <h2>Built in the Open</h2>
+                <p>All Aurora Software projects are open source. Learn, or simply explore the code.</p>
+                <a href="https://github.com/D4v31x" class="btn-primary" target="_blank" style="margin-top: 24px; display: inline-flex;">
+                    <i class="fab fa-github"></i>
+                    <span>View on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="img/Aurora_modern.svg" alt="Aurora" class="logo-img">
+                </a>
+                <p>Next generation music player</p>
+                <div class="footer-social">
+                    <a href="https://github.com/D4v31x/Aurora-Music" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/aurora.software/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="download.html">Download</a>
+                    <a href="projects.html">Features</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">GitHub</a>
+                    <a href="https://www.instagram.com/aurora.software/" target="_blank">Instagram</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="terms.html#privacy">Privacy Policy</a>
+                    <a href="terms.html#terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Aurora Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
+        gsap.registerPlugin(ScrollTrigger);
+        
+        const cursorGlow = document.querySelector('.cursor-glow');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+        gsap.ticker.add(() => {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            gsap.set(cursorGlow, { x: cursorX, y: cursorY });
         });
 
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '15px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.95)';
-            } else {
-                nav.style.padding = '20px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.8)';
-            }
-        });
+        gsap.to('.orb-1', { x: 150, y: -80, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.orb-2', { x: -120, y: 100, duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        gsap.from('.page-header', { y: 40, opacity: 0, duration: 0.5 });
+        gsap.utils.toArray('.project-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 85%' },
+                y: 50, opacity: 0, duration: 0.4, delay: i * 0.08
             });
         });
 
-        window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
+        ScrollTrigger.create({
+            start: 'top -60',
+            onUpdate: () => document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 60)
+        });
 
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-let isMenuOpen = false;
-
-mobileMenuToggle.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    mobileMenuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-});
-
-// Close menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (isMenuOpen && !e.target.closest('nav')) {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
     </script>
 </body>
 </html>

@@ -3,362 +3,557 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Aurora Music</title>
+    <title>Aurora Software - Privacy Policy & Terms</title>
     <link rel="icon" type="image/png" href="/img/A_pfp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        :root {
-            --primary: #FF3366;
-            --secondary: #6C63FF;
-            --accent: #00F5A0;
-            --dark: #13111C;
-            --darker: #0C0A13;
-            --light: #ffffff;
-            --gray: #9CA3AF;
-        }
-
-        body {
-            background: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
-        }
-
-        nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1400px;
-            padding: 10px;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .logo {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            padding: 8px 20px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            box-shadow: 
-                0 4px 24px -1px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-            transition: all 0.3s ease;
-        }
-
-        .logo img {
-            height: 32px;
-            width: auto;
-        }
-
-        .terms-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 20px 60px;
-        }
-
-        .terms-header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 0;
-            background: radial-gradient(circle at center, 
-                rgba(255, 51, 102, 0.1), 
-                rgba(108, 99, 255, 0.1),
-                transparent 60%);
-        }
-
-        .terms-header h1 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            color: var(--light);
-        }
-
-        .terms-header p {
-            color: var(--gray);
-            font-size: 16px;
-        }
-
-        .terms-content {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 40px;
-        }
-
-        .terms-section {
-            margin-bottom: 30px;
-        }
-
-        .terms-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .terms-section h2 {
-            color: var(--primary);
-            font-size: 24px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .terms-section h3 {
-            color: var(--light);
-            font-size: 20px;
-            margin: 20px 0 15px;
-        }
-
-        .terms-section p {
-            color: var(--gray);
-            margin-bottom: 15px;
-        }
-
-        .terms-section ul {
-            color: var(--gray);
-            margin: 15px 0;
-            padding-left: 20px;
-        }
-
-        .terms-section li {
-            margin-bottom: 10px;
-        }
-
-        .terms-footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--gray);
-            font-size: 14px;
-        }
-
-        .terms-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .terms-footer a:hover {
-            color: var(--secondary);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: var(--light);
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            cursor: pointer;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            background: var(--secondary);
-        }
-
-        @media (max-width: 768px) {
-            .terms-container {
-                padding: 100px 15px 40px;
-            }
-
-            .terms-content {
-                padding: 25px;
-            }
-
-            .terms-header h1 {
-                font-size: 28px;
-            }
-
-            .terms-section h2 {
-                font-size: 22px;
-            }
-
-            .terms-section h3 {
-                font-size: 18px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">
-            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
-        </a>
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="cursor-glow"></div>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="img/Aurora_modern.svg" alt="Aurora" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="download.html" class="nav-btn">
+                <span>Download</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <button class="nav-toggle"><span></span><span></span></button>
+        </div>
     </nav>
 
-    <div class="terms-container">
-        <div class="terms-header">
-            <h1>Privacy Policy</h1>
-            <p>Last updated: August 18, 2024</p>
+    <section class="page-header">
+        <span class="label">Legal</span>
+        <h1>Privacy Policy & Terms</h1>
+        <p>Last updated: January 18, 2026</p>
+    </section>
+
+    <section class="legal-section">
+        <div class="legal-container">
+            <div class="legal-nav">
+                <a href="#privacy" class="legal-nav-item active">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Privacy Policy</span>
+                </a>
+                <a href="#terms" class="legal-nav-item">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Terms of Service</span>
+                </a>
+                <a href="#opensource" class="legal-nav-item">
+                    <i class="fab fa-github"></i>
+                    <span>Open Source</span>
+                </a>
+            </div>
+
+            <div class="legal-content">
+                <!-- Privacy Policy -->
+                <div class="legal-block" id="privacy">
+                    <div class="legal-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>Privacy Policy</h2>
+                    </div>
+                    
+                    <div class="legal-text">
+                        <h3>Introduction</h3>
+                        <p>Aurora Music ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application Aurora Music (the "App").</p>
+                        <p>By using Aurora Music, you agree to the collection and use of information in accordance with this policy.</p>
+                        
+                        <h3>Information We Collect</h3>
+                        
+                        <h4>1. Information Stored Locally on Your Device</h4>
+                        <p>Aurora Music stores the following data <strong>locally on your device only</strong>:</p>
+                        <ul>
+                            <li><strong>User Preferences:</strong> Theme settings, language preferences, display options, and app configuration</li>
+                            <li><strong>Listening History:</strong> Your recently played tracks (up to 1,000 events) to provide personalized suggestions</li>
+                            <li><strong>Play Statistics:</strong> Play counts for tracks, albums, artists, and playlists to improve recommendations</li>
+                            <li><strong>Playlists:</strong> User-created playlists and liked songs</li>
+                            <li><strong>Cached Data:</strong> Album artwork, artist images, and lyrics cached for offline access and performance</li>
+                            <li><strong>App Settings:</strong> Audio playback preferences, notification settings, and UI customizations</li>
+                        </ul>
+                        <p><strong>This data never leaves your device and is not transmitted to our servers.</strong></p>
+                        
+                        <h4>2. Analytics Data (Microsoft Clarity)</h4>
+                        <p>We use Microsoft Clarity to understand how users interact with our app. Clarity collects:</p>
+                        <ul>
+                            <li>Anonymous usage patterns and session recordings</li>
+                            <li>UI interaction heatmaps</li>
+                            <li>App performance metrics</li>
+                            <li>Crash and error reports</li>
+                        </ul>
+                        <p><strong>Clarity does not collect personally identifiable information.</strong> All data is anonymized and aggregated. You can learn more about Microsoft Clarity's privacy practices at <a href="https://clarity.microsoft.com/terms" target="_blank">clarity.microsoft.com/terms</a>.</p>
+                        
+                        <h4>3. Error Reports</h4>
+                        <p>When the app encounters errors, we collect:</p>
+                        <ul>
+                            <li>Error messages and stack traces</li>
+                            <li>Timestamp of the error</li>
+                            <li>Device and app version information</li>
+                        </ul>
+                        <p>Error data is stored locally and may be sent anonymously to help us improve app stability.</p>
+                        
+                        <h3>Permissions We Request</h3>
+                        <p>Aurora Music requests the following permissions to function properly:</p>
+                        <div class="permissions-table">
+                            <div class="permission-row">
+                                <span class="permission-name"><i class="fas fa-folder-open"></i> Storage / Media Audio</span>
+                                <span class="permission-desc">Required to access and play music files stored on your device</span>
+                            </div>
+                            <div class="permission-row">
+                                <span class="permission-name"><i class="fas fa-wifi"></i> Internet</span>
+                                <span class="permission-desc">Required to fetch album artwork, lyrics, and music metadata from online services</span>
+                            </div>
+                            <div class="permission-row">
+                                <span class="permission-name"><i class="fas fa-bell"></i> Notifications</span>
+                                <span class="permission-desc">Optional - to display playback controls in your notification bar</span>
+                            </div>
+                            <div class="permission-row">
+                                <span class="permission-name"><i class="fab fa-bluetooth-b"></i> Bluetooth</span>
+                                <span class="permission-desc">Optional - to support Bluetooth audio devices and controls</span>
+                            </div>
+                            <div class="permission-row">
+                                <span class="permission-name"><i class="fas fa-play-circle"></i> Foreground Service</span>
+                                <span class="permission-desc">Required to continue audio playback when the app is in the background</span>
+                            </div>
+                        </div>
+                        
+                        <h3>Third-Party Services</h3>
+                        <p>Aurora Music connects to the following third-party services to enhance your experience:</p>
+                        
+                        <h4>Lyrics Service</h4>
+                        <ul>
+                            <li><strong>Provider:</strong> LRCLib (lrclib.net)</li>
+                            <li><strong>Data Sent:</strong> Song title and artist name</li>
+                            <li><strong>Purpose:</strong> Fetching synchronized lyrics for your music</li>
+                            <li><strong>Privacy Policy:</strong> <a href="https://lrclib.net" target="_blank">lrclib.net</a></li>
+                        </ul>
+                        
+                        <h4>Album Artwork & Metadata</h4>
+                        <ul>
+                            <li><strong>Providers:</strong> Deezer API, iTunes/Apple Music API</li>
+                            <li><strong>Data Sent:</strong> Search queries containing song/album/artist names</li>
+                            <li><strong>Purpose:</strong> Fetching album artwork and music metadata</li>
+                            <li><strong>Privacy Policies:</strong> <a href="https://www.deezer.com/legal/personal-datas" target="_blank">Deezer</a>, <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple</a></li>
+                        </ul>
+                        
+                        <h4>Artist Images (Optional)</h4>
+                        <ul>
+                            <li><strong>Provider:</strong> Spotify API (only if configured with API keys)</li>
+                            <li><strong>Data Sent:</strong> Artist names</li>
+                            <li><strong>Purpose:</strong> Fetching artist profile images</li>
+                            <li><strong>Privacy Policy:</strong> <a href="https://www.spotify.com/privacy" target="_blank">spotify.com/privacy</a></li>
+                        </ul>
+                        
+                        <h4>Donation Platforms (Optional)</h4>
+                        <p>If you choose to support development through donations, you may be redirected to:</p>
+                        <ul>
+                            <li>Ko-fi (<a href="https://ko-fi.com/privacy" target="_blank">ko-fi.com/privacy</a>)</li>
+                            <li>Buy Me a Coffee (<a href="https://www.buymeacoffee.com/privacy-policy" target="_blank">buymeacoffee.com/privacy-policy</a>)</li>
+                        </ul>
+                        <p>These platforms have their own privacy policies, and we do not receive any personal payment information.</p>
+                        
+                        <h3>Data Security</h3>
+                        <p>We implement the following measures to protect your data:</p>
+                        <ul>
+                            <li><strong>Local Storage:</strong> All personal data (playlists, preferences, listening history) is stored locally on your device and is not transmitted to external servers</li>
+                            <li><strong>No Account Required:</strong> Aurora Music does not require user registration or login</li>
+                            <li><strong>No Cloud Sync:</strong> Your data stays on your device and is not synced to cloud services</li>
+                            <li><strong>Encrypted Storage:</strong> Sensitive data uses the platform's secure storage mechanisms</li>
+                        </ul>
+                        
+                        <h3>Data Retention</h3>
+                        <ul>
+                            <li><strong>Local Data:</strong> Stored on your device until you uninstall the app or manually clear app data</li>
+                            <li><strong>Listening History:</strong> Limited to the most recent 1,000 events</li>
+                            <li><strong>Cached Content:</strong> Artwork and lyrics cache can be cleared through app settings</li>
+                            <li><strong>Analytics Data:</strong> Retained according to Microsoft Clarity's data retention policies</li>
+                        </ul>
+                        
+                        <h3>Your Rights and Choices</h3>
+                        <p>You have the following rights regarding your data:</p>
+                        
+                        <h4>Clear Your Data</h4>
+                        <ul>
+                            <li>Uninstall the app to remove all locally stored data</li>
+                            <li>Clear app cache through your device settings</li>
+                            <li>Clear specific data (playlists, history) through app settings</li>
+                        </ul>
+                        
+                        <h4>Opt-Out Options</h4>
+                        <ul>
+                            <li>Disable notification permission to prevent notification-based controls</li>
+                            <li>Disable internet access to prevent any external data fetching (lyrics, artwork will be unavailable)</li>
+                            <li>Use the app offline to minimize data transmission</li>
+                        </ul>
+                        
+                        <h4>Control Analytics</h4>
+                        <p>While analytics are anonymized, you can limit data collection by:</p>
+                        <ul>
+                            <li>Using the app in offline mode where possible</li>
+                            <li>Reviewing your device's privacy settings for app permissions</li>
+                        </ul>
+                        
+                        <h3>Children's Privacy</h3>
+                        <p>Aurora Music is not directed at children under the age of 13. We do not knowingly collect personal information from children. The app is a music player for locally stored content and does not contain age-restricted features.</p>
+                        
+                        <h3>Changes to This Privacy Policy</h3>
+                        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by:</p>
+                        <ul>
+                            <li>Updating the "Last Updated" date at the top of this policy</li>
+                            <li>Displaying a notice within the app for significant changes</li>
+                        </ul>
+                        <p>We encourage you to review this Privacy Policy periodically.</p>
+                        
+                        <h3>Open Source</h3>
+                        <p>Aurora Music is developed as an open-source project. You can review the source code to verify our privacy practices at our <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">GitHub repository</a>.</p>
+                        
+                        <h3>Contact Us</h3>
+                        <p>If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
+                        <ul>
+                            <li><strong>Developer:</strong> Aurora Software CZ</li>
+                            <li><strong>GitHub:</strong> <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">github.com/D4v31x/Aurora-Music</a></li>
+                            <li><strong>Support:</strong> Through GitHub Issues or our Ko-fi page</li>
+                        </ul>
+                        
+                        <h3>Summary</h3>
+                        <div class="summary-table">
+                            <div class="summary-row header">
+                                <span>What We Collect</span>
+                                <span>Where It's Stored</span>
+                                <span>Shared With Third Parties?</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Music library data</span>
+                                <span>Your device only</span>
+                                <span>No</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Playlists & favorites</span>
+                                <span>Your device only</span>
+                                <span>No</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Listening history</span>
+                                <span>Your device only</span>
+                                <span>No</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>App preferences</span>
+                                <span>Your device only</span>
+                                <span>No</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Anonymous usage analytics</span>
+                                <span>Microsoft Clarity</span>
+                                <span>Yes (anonymized)</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Song/artist names</span>
+                                <span>Lyrics & metadata APIs</span>
+                                <span>Yes (for fetching content)</span>
+                            </div>
+                        </div>
+                        <p class="privacy-tagline"><strong>Aurora Music is designed with privacy in mind. Your music, your data, your device.</strong></p>
+                    </div>
+                </div>
+
+                <!-- Terms of Service -->
+                <div class="legal-block" id="terms">
+                    <div class="legal-header">
+                        <i class="fas fa-file-contract"></i>
+                        <h2>Terms of Service</h2>
+                    </div>
+                    
+                    <div class="legal-text">
+                        <p class="last-updated"><strong>Last Updated:</strong> January 18, 2026</p>
+                        
+                        <h3>1. Acceptance of Terms</h3>
+                        <p>By downloading, installing, or using Aurora Music ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not download, install, or use the App.</p>
+                        <p>These Terms constitute a legally binding agreement between you and Aurora Software CZ ("we," "us," or "our").</p>
+                        
+                        <h3>2. Description of Service</h3>
+                        <p>Aurora Music is a free, open-source mobile application for Android that allows users to:</p>
+                        <ul>
+                            <li>Play locally stored music files on their device</li>
+                            <li>Organize music into playlists and libraries</li>
+                            <li>View synchronized lyrics fetched from third-party services</li>
+                            <li>Display album artwork and artist information</li>
+                            <li>Customize the app appearance and playback settings</li>
+                        </ul>
+                        
+                        <h3>3. License Grant</h3>
+                        <p>Aurora Music is open-source software released under the <strong>GNU General Public License v3.0 (GPL-3.0)</strong>.</p>
+                        <p>Under this license, you are granted the right to:</p>
+                        <ul>
+                            <li><strong>Use:</strong> Run the software for any purpose</li>
+                            <li><strong>Study:</strong> Access and examine the source code</li>
+                            <li><strong>Modify:</strong> Make changes to the source code</li>
+                            <li><strong>Distribute:</strong> Share copies of the original software</li>
+                            <li><strong>Distribute Modifications:</strong> Share your modified versions</li>
+                        </ul>
+                        <p><strong>Copyleft Requirement:</strong> Any modifications or derivative works must also be released under the GPL-3.0 license. You must make the source code available when distributing the software.</p>
+                        <p>The full license text is available at <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">gnu.org/licenses/gpl-3.0.html</a> and in our <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">GitHub repository</a>.</p>
+                        
+                        <h3>4. User Responsibilities</h3>
+                        <p>By using Aurora Music, you agree to:</p>
+                        <ul>
+                            <li><strong>Legal Use:</strong> Use the App only for lawful purposes and in compliance with all applicable laws</li>
+                            <li><strong>Content Ownership:</strong> Only play music files that you own, have purchased, or have legal rights to access</li>
+                            <li><strong>Respect Copyright:</strong> Not use the App to infringe on any copyright, trademark, or other intellectual property rights</li>
+                            <li><strong>No Misuse:</strong> Not attempt to harm, disrupt, or exploit the App or its third-party services</li>
+                            <li><strong>Accurate Information:</strong> Provide accurate information when contacting support or reporting issues</li>
+                        </ul>
+                        
+                        <h3>5. Third-Party Services</h3>
+                        <p>Aurora Music integrates with third-party services to provide features like lyrics, album artwork, and metadata. By using these features, you also agree to the terms of service and privacy policies of:</p>
+                        <ul>
+                            <li>LRCLib (lyrics)</li>
+                            <li>Deezer API (artwork and metadata)</li>
+                            <li>Apple Music/iTunes API (artwork and metadata)</li>
+                            <li>Spotify API (artist images, if configured)</li>
+                            <li>Microsoft Clarity (analytics)</li>
+                        </ul>
+                        <p>We are not responsible for the availability, accuracy, or content provided by these third-party services.</p>
+                        
+                        <h3>6. Intellectual Property</h3>
+                        <p><strong>Aurora Music:</strong> The Aurora Music name, logo, and branding are owned by Aurora Software CZ. The source code is licensed under GPL-3.0.</p>
+                        <p><strong>Your Content:</strong> You retain all rights to your music files and any playlists you create. We do not claim ownership of your content.</p>
+                        <p><strong>Third-Party Content:</strong> Album artwork, lyrics, and metadata fetched from third-party services remain the property of their respective owners.</p>
+                        
+                        <h3>7. Disclaimer of Warranties</h3>
+                        <p>AURORA MUSIC IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</p>
+                        <ul>
+                            <li>WARRANTIES OF MERCHANTABILITY</li>
+                            <li>FITNESS FOR A PARTICULAR PURPOSE</li>
+                            <li>NON-INFRINGEMENT</li>
+                            <li>ACCURACY OR COMPLETENESS OF CONTENT</li>
+                        </ul>
+                        <p>We do not warrant that:</p>
+                        <ul>
+                            <li>The App will be error-free, uninterrupted, or secure</li>
+                            <li>Defects will be corrected in a timely manner</li>
+                            <li>The App will meet your specific requirements</li>
+                            <li>Third-party services (lyrics, artwork) will always be available</li>
+                        </ul>
+                        
+                        <h3>8. Limitation of Liability</h3>
+                        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, AURORA SOFTWARE CZ SHALL NOT BE LIABLE FOR:</p>
+                        <ul>
+                            <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+                            <li>Loss of data, profits, or goodwill</li>
+                            <li>Damages arising from your use or inability to use the App</li>
+                            <li>Damages arising from third-party services or content</li>
+                            <li>Any unauthorized access to or alteration of your data</li>
+                        </ul>
+                        <p>This limitation applies regardless of the legal theory (contract, tort, negligence, or otherwise) and even if we have been advised of the possibility of such damages.</p>
+                        
+                        <h3>9. Beta Software Acknowledgment</h3>
+                        <p>Aurora Music is currently in <strong>beta testing</strong>. By using the beta version, you acknowledge and agree that:</p>
+                        <ul>
+                            <li>The App may contain bugs, errors, and incomplete features</li>
+                            <li>The App may crash or cause data loss</li>
+                            <li>Features may change or be removed without notice</li>
+                            <li>Performance may not be optimal</li>
+                            <li>You are using the App at your own risk</li>
+                        </ul>
+                        <p>We encourage you to report bugs and provide feedback through our GitHub Issues page.</p>
+                        
+                        <h3>10. Termination</h3>
+                        <p>You may stop using Aurora Music at any time by uninstalling the App from your device.</p>
+                        <p>We reserve the right to:</p>
+                        <ul>
+                            <li>Discontinue the App or any feature at any time</li>
+                            <li>Release updates that modify functionality</li>
+                            <li>End support for older versions</li>
+                        </ul>
+                        <p>Upon termination of your use, all locally stored data (preferences, playlists, cache) will be deleted when you uninstall the App.</p>
+                        
+                        <h3>11. Modifications to Terms</h3>
+                        <p>We reserve the right to modify these Terms at any time. Changes will be effective when posted. We will notify you of significant changes by:</p>
+                        <ul>
+                            <li>Updating the "Last Updated" date at the top of these Terms</li>
+                            <li>Displaying a notice within the App for material changes</li>
+                        </ul>
+                        <p>Your continued use of the App after changes are posted constitutes acceptance of the modified Terms.</p>
+                        
+                        <h3>12. Governing Law & Jurisdiction</h3>
+                        <p>These Terms shall be governed by and construed in accordance with the laws of the <strong>Czech Republic</strong>, without regard to its conflict of law provisions.</p>
+                        <p>Any disputes arising from these Terms or your use of the App shall be subject to the exclusive jurisdiction of the courts of the Czech Republic.</p>
+                        
+                        <h3>13. Severability</h3>
+                        <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
+                        
+                        <h3>14. Entire Agreement</h3>
+                        <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Aurora Software CZ regarding the use of Aurora Music and supersede any prior agreements.</p>
+                        
+                        <h3>15. Contact Information</h3>
+                        <p>If you have any questions about these Terms of Service, please contact us:</p>
+                        <ul>
+                            <li><strong>Developer:</strong> Aurora Software CZ</li>
+                            <li><strong>Email:</strong> <a href="mailto:aurorasoftware.cz@gmail.com">aurorasoftware.cz@gmail.com</a></li>
+                            <li><strong>GitHub:</strong> <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">github.com/D4v31x/Aurora-Music</a></li>
+                        </ul>
+                        
+                        <p class="tos-tagline"><strong>Thank you for using Aurora Music!</strong></p>
+                    </div>
+                </div>
+
+                <!-- Open Source -->
+                <div class="legal-block" id="opensource">
+                    <div class="legal-header">
+                        <i class="fab fa-github"></i>
+                        <h2>Open Source Licenses</h2>
+                    </div>
+                    
+                    <div class="legal-text">
+                        <h3>Aurora Music License</h3>
+                        <p>Aurora Music is open-source software licensed under the GNU General Public License v3.0:</p>
+                        
+                        <div class="license-box">
+                            <p>GNU GENERAL PUBLIC LICENSE</p>
+                            <p>Version 3, 29 June 2007</p>
+                            <p>Copyright (c) 2024-2026 Aurora Software</p>
+                            <p>Aurora Music is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+                            <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+                            <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="https://www.gnu.org/licenses/" target="_blank">https://www.gnu.org/licenses/</a>.</p>
+                        </div>
+                        
+                        <h3>Third-Party Libraries</h3>
+                        <p>Aurora Music uses various open-source libraries. A full list of dependencies and their licenses can be found in our <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">GitHub repository</a>.</p>
+                        
+                        <h3>Contributing</h3>
+                        <p>We welcome contributions! By contributing to Aurora Music, you agree that your contributions will be licensed under the same GNU GPL v3.0 License.</p>
+                        
+                        <div class="opensource-cta">
+                            <a href="https://github.com/D4v31x/Aurora-Music" target="_blank" class="btn-primary">
+                                <i class="fab fa-github"></i>
+                                <span>View on GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="terms-content">
-            <div class="terms-section">
-                <h2>1. Introduction</h2>
-                <p>Welcome to Aurora Music's Privacy Policy. I take your privacy seriously and I am committed to protecting your personal data that you provide while using my application.</p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="img/Aurora_modern.svg" alt="Aurora" class="logo-img">
+                </a>
+                <p>Next generation music player</p>
+                <div class="footer-social">
+                    <a href="https://github.com/D4v31x/Aurora-Music" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/aurora.software/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-
-            <div class="terms-section">
-                <h2>2. Information I Collect</h2>
-                <p>While using Aurora Music, I may collect the following categories of personal data:</p>
-
-                <h3>2.1 Device Technical Information</h3>
-                <ul>
-                    <li>Device brand and model</li>
-                    <li>Operating system version</li>
-                </ul>
-
-                <h3>2.2 Application Usage Data</h3>
-                <ul>
-                    <li>Time and date of application access</li>
-                    <li>Error and crash logs</li>
-                </ul>
-
-                <h3>2.3 User Identifiers</h3>
-                <ul>
-                    <li>Unique ID created during app installation</li>
-                </ul>
-            </div>
-
-            <div class="terms-section">
-                <h2>3. Purpose of Data Processing</h2>
-                <p>I use your personal data for the following purposes:</p>
-                <ul>
-                    <li><strong>Usage Analysis:</strong> Helps me understand how the application is used and improve its functionality</li>
-                    <li><strong>Improvement and Optimization:</strong> I use the data to enhance the app and ensure its stability across different devices</li>
-                    <li><strong>Diagnostics and Bug Fixing:</strong> Application crash information allows us to respond to issues more quickly</li>
-                </ul>
-            </div>
-
-            <div class="terms-section">
-                <h2>4. Legal Basis for Processing</h2>
-                <p>I process your data based on:</p>
-                <ul>
-                    <li><strong>Legitimate Interest:</strong> To ensure optimal functioning and security of the application</li>
-                    <li><strong>Contractual Obligations:</strong> To provide services according to our terms of use</li>
-                    <li><strong>Consent:</strong> When required,I will ask for your consent for data processing, which you can withdraw at any time</li>
-                </ul>
-            </div>
-
-            <div class="terms-section">
-                <h2>5. Data Retention</h2>
-                <h3>5.1 Storage Location and Duration</h3>
-                <p>Your data is stored on secure servers. I retain it for as long as necessary to fulfill the purposes described in this policy or as required by law.</p>
-
-                <h3>5.2 Data Security</h3>
-                <p>I use various security technologies and procedures to protect your personal data from unauthorized access, use, or disclosure.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>6. User Rights</h2>
-                <h3>6.1 Rights under GDPR</h3>
-                <ul>
-                    <li>Right to access your data</li>
-                    <li>Right to rectification</li>
-                    <li>Right to erasure</li>
-                    <li>Right to restrict processing</li>
-                    <li>Right to data portability</li>
-                    <li>Right to object to processing</li>
-                </ul>
-
-                <h3>6.2 Rights under CCPA</h3>
-                <ul>
-                    <li>Right to know about collection</li>
-                    <li>Right to deletion</li>
-                    <li>Right to opt-out of sharing</li>
-                    <li>Right to non-discrimination</li>
-                </ul>
-            </div>
-
-            <div class="terms-section">
-                <h2>7. Data Sharing</h2>
-                <p>I do not share your personal data with third parties unless required by law or with your explicit consent. Aurora Software never sells personal data to third parties.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>8. International Data Transfers</h2>
-                <p>Your personal data may be transferred and processed outside your country of residence if required by our service providers. In such cases, I ensure appropriate data protection safeguards are in place.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>9. Cookies and Tracking Technologies</h2>
-                <p>Aurora Music does not use cookies or other tracking technologies to monitor your activities.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>10. Children's Privacy</h2>
-                <p>This application is not intended for children under 13 years of age, and I do not knowingly collect personal data from children of this age. If I discover that I have inadvertently collected such data, I will delete it immediately.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>11. Changes to This Policy</h2>
-                <p>I reserve the right to modify this privacy policy at any time. If I make substantial changes, I will notify you through the application or by other appropriate means. I recommend regularly checking this page for updates.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>12. Contact Us</h2>
-                <p>If you have any questions or comments regarding this privacy policy, please don't hesitate to contact me at:</p>
-                <p><a href="mailto:info.auroramusic@protonmail.com">info.auroramusic@protonmail.com</a></p>
-            </div>
-
-            <div class="terms-section">
-                <h2>13. Final Provisions</h2>
-                <p>This privacy policy takes effect on August 18, 2024, and supersedes all previous versions.</p>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="download.html">Download</a>
+                    <a href="projects.html">Features</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="terms.html#privacy">Privacy Policy</a>
+                    <a href="terms.html#terms">Terms of Service</a>
+                    <a href="terms.html#opensource">Open Source</a>
+                </div>
             </div>
         </div>
-
-        <div class="terms-footer">
-            <p>For questions about this Privacy Policy, please contact me at <a href="mailto:info.auroramusic@protonmail.com">info.auroramusic@protonmail.com</a></p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Aurora Software. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
     <script>
-        const backToTop = document.getElementById('backToTop');
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+        
+        const cursorGlow = document.querySelector('.cursor-glow');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+        gsap.ticker.add(() => {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            gsap.set(cursorGlow, { x: cursorX, y: cursorY });
+        });
 
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+        gsap.to('.orb-1', { x: 150, y: -80, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.orb-2', { x: -120, y: 100, duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+        gsap.from('.page-header', { y: 40, opacity: 0, duration: 0.5 });
+        gsap.from('.legal-nav', {
+            scrollTrigger: { trigger: '.legal-nav', start: 'top 85%' },
+            x: -30, opacity: 0, duration: 0.4
+        });
+        gsap.utils.toArray('.legal-block').forEach((block, i) => {
+            gsap.from(block, {
+                scrollTrigger: { trigger: block, start: 'top 85%' },
+                y: 40, opacity: 0, duration: 0.4, delay: i * 0.1
+            });
+        });
+
+        // Navigation highlighting
+        const navItems = document.querySelectorAll('.legal-nav-item');
+        const blocks = document.querySelectorAll('.legal-block');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, { duration: 0.6, scrollTo: { y: target, offsetY: 100 }, ease: 'power2.out' });
+                    navItems.forEach(n => n.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav on scroll
+        ScrollTrigger.create({
+            trigger: '.legal-content',
+            start: 'top top',
+            end: 'bottom bottom',
+            onUpdate: () => {
+                let current = '';
+                blocks.forEach(block => {
+                    const rect = block.getBoundingClientRect();
+                    if (rect.top < 200) current = block.id;
+                });
+                navItems.forEach(item => {
+                    item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+                });
             }
         });
 
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        ScrollTrigger.create({
+            start: 'top -60',
+            onUpdate: () => document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 60)
+        });
+
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
         });
     </script>
 </body>

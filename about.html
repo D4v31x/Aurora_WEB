@@ -3,122 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurora Software - About Us</title>
+    <title>Aurora Software - About</title>
     <link rel="icon" type="image/png" href="/img/A_pfp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="styles_about.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">
-            <img src="img/Aurora_modern.svg" alt="Aurora Logo">
-        </a>
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="cursor-glow"></div>
 
-        <button class="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="download.html">Download</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html" class="active">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="blog.html">Blog</a>
-            <div class="nav-marker"></div>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="img/Aurora_modern.svg" alt="Aurora" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Products</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="download.html" class="nav-btn">
+                <span>Download</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <button class="nav-toggle"><span></span><span></span></button>
         </div>
     </nav>
 
-    <section class="about-hero">
-        <div class="about-content">
-            <div class="about-header" data-aos="fade-up">
-                <h1>About Aurora Software</h1>
-                <p>Aurora Software is a project created by a high-school IT student. No other persons are involved.</p>
+    <section class="page-header">
+        <span class="label">Who We Are</span>
+        <h1>About Aurora</h1>
+        <p>Building beautiful software experiences for music lovers</p>
+    </section>
+
+    <section class="about-stack">
+        <div class="stack-container">
+            <div class="stack-card">
+                <span class="card-badge"><i class="fas fa-book-open"></i>Story</span>
+                <h2>The Beginning</h2>
+                <p>Aurora Software started as a passion project by a music enthusiast who wanted a better way to experience music on Android. Frustrated with existing players lacking personality and modern design, the journey to create Aurora Music began.</p>
+                <p style="margin-top: 16px; opacity: 0.7;">What started as a personal project has grown into a commitment to deliver the most beautiful and functional music player available.</p>
             </div>
         </div>
     </section>
 
-    <section class="team-section">
-        <div class="team-grid">
-            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                <div class="member-image">
-                    <img src="img/pfp.jpg" alt="David B">
-                </div>
-                <div class="member-info">
-                    <h3>David Brichacek</h3>
-                    <div class="role">Founder, UX Desginer, Marketing</div>
-                    <p>High-School IT student from Czech Republic, who loves to mess up with PC, mobile phones, etc. Recently started digging in graphic design.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/iam_daveid_/"><i class="fab fa-instagram"></i> @iam_daveid_</a>
-                        <a href="https://www.instagram.com/aurora.software/"><i class="fab fa-instagram"></i> @aurora_software</a>
-                    </div>
+    <section class="about-stack" style="padding-top: 20px;">
+        <div class="stack-container">
+            <div class="stack-card">
+                <span class="card-badge"><i class="fas fa-user"></i> The Creator</span>
+                <h2>David</h2>
+                <p style="font-size: 15px; margin-bottom: 12px; color: var(--accent);">Developer & Designer</p>
+                <p>A passionate student developer with a love for music and beautiful interfaces. Combining technical skills with creative vision to build Aurora Music from the ground up.</p>
+                <div class="social-row" style="margin-top: 20px; justify-content: center;">
+                    <a href="https://github.com/D4v31x" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/aurora.software/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/iam_daveid_/" target="_blank"><i class="fab fa-instagram"></i></a>
+
                 </div>
             </div>
-            
         </div>
-        
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <section class="faq-section">
+        <div class="section-intro">
+            <span class="label">Questions</span>
+            <h2>Frequently Asked</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is Aurora Music free?</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Aurora Music is completely free and open source. No ads, no subscriptions, no hidden costs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What platforms are supported?</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently Aurora Music is available for Android. iOS and desktop versions are planned for future development.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Where does the music data come from?</span>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Aurora Music plays your local music files. Lyrics and metadata are fetched from various online sources when available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <img src="img/Aurora_modern.svg" alt="Aurora" class="logo-img">
+                </a>
+                <p>Next generation music player</p>
+                <div class="footer-social">
+                    <a href="https://github.com/D4v31x/Aurora-Music" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/aurora.software/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="download.html">Download</a>
+                    <a href="projects.html">Features</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <a href="https://github.com/D4v31x/Aurora-Music" target="_blank">GitHub</a>
+                    <a href="https://www.instagram.com/aurora.software/" target="_blank">Instagram</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="terms.html#privacy">Privacy Policy</a>
+                    <a href="terms.html#terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Aurora Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true
+        gsap.registerPlugin(ScrollTrigger);
+        
+        const cursorGlow = document.querySelector('.cursor-glow');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+        gsap.ticker.add(() => {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            gsap.set(cursorGlow, { x: cursorX, y: cursorY });
         });
 
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.padding = '15px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.95)';
-            } else {
-                nav.style.padding = '20px 40px';
-                nav.style.background = 'rgba(19, 17, 28, 0.8)';
-            }
+        gsap.to('.orb-1', { x: 150, y: -80, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        gsap.to('.orb-2', { x: -120, y: 100, duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+        gsap.from('.page-header', { y: 40, opacity: 0, duration: 0.5 });
+        
+        gsap.utils.toArray('.stack-card, .value-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 85%' },
+                y: 50, opacity: 0, duration: 0.4, delay: i * 0.05
+            });
         });
 
-        window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 100) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
+        gsap.utils.toArray('.faq-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: { trigger: item, start: 'top 90%' },
+                y: 30, opacity: 0, duration: 0.3, delay: i * 0.05
+            });
+        });
 
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-let isMenuOpen = false;
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+        });
 
-mobileMenuToggle.addEventListener('click', () => {
-    isMenuOpen = !isMenuOpen;
-    mobileMenuToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-});
+        ScrollTrigger.create({
+            start: 'top -60',
+            onUpdate: () => document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 60)
+        });
 
-// Close menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (isMenuOpen && !e.target.closest('nav')) {
-        isMenuOpen = false;
-        mobileMenuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
     </script>
 </body>
 </html>
